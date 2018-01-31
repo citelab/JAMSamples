@@ -1,6 +1,7 @@
 //This App is available up to the fog so it can use data sharing
 //when a car need to make a request, it will send the query through the fog using logging
 
+
 var express, socket, clientSocket, carID;
 
 jdata{
