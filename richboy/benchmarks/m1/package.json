@@ -1,0 +1,8 @@
+{
+  "name": "jamscript-m1",
+  "description": "JAMScript measurement 1",
+  "version": "0.0.1",
+  "dependencies": {
+    "synaptic": "^1.1.4"
+  }
+}
