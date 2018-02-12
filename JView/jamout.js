@@ -18,7 +18,7 @@ jnode.addLogger("temp", temp.getMyDataStream());
 var pos = new JAMLogger(JAMManager, "pos");
 jnode.addLogger("pos", pos.getMyDataStream());
 var io = require('socket.io-client');
-var socket = io('http://localhost:3000');
+var socket = io('http://localhost:' + port);
 var jvc = 0; setInterval(() => {for (i = 0; i < temp.size(); i++) if (temp[i] !== undefined && temp[i].lastValue() != null) socket.emit('newDataPoint', {x: jvc++, y: temp[i].lastValue(), gateIndex: 0, id: "temp"});}, 500);
 var jvc = 0; setInterval(() => {for (i = 0; i < pos.size(); i++) if (pos[i] !== undefined && pos[i].lastValue() != null) socket.emit('newDataPoint', {x: jvc++, y: pos[i].lastValue(), gateIndex: 0, id: "pos"});}, 500);
 var mbox = {
