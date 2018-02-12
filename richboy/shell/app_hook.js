@@ -5,6 +5,7 @@ var Hook = require('./hook.js');
 const cmd = require('node-cmd');
 const fs = require('fs');
 const npath = require('path');
+const {Flow, OutFlow, InFlow, Streamer} = require('richflow').Flow;
 //var stream = require('stream');
 
 const startingRedisPort = 1379;
@@ -14,6 +15,8 @@ var redisPorts = [];
 var cNodes = [];
 var jNodes = [];
 var path;
+
+var apps = {};  //name: {path, tokens, code, cNodes, jNodes, redises, redisPorts}
 
 class AppHook extends Hook{
     constructor(opts){
@@ -28,26 +31,26 @@ class AppHook extends Hook{
         var self = this;
         return new Promise((resolve, reject) => {
             self.terminal.inputField(
-                {
-                    history: history,
-                    tokenHook: self.tokenizer,
-                    autoCompleteHint: true,
-                    autoComplete: self.getAutoCompleteData()
-                },
-                (err, input) => {
-                    if( self.isBusy ){
-                        self.resolver = resolve;
-                    }
-                    else {
-                        if (err)
-                            reject(err);
-                        else {
-                            resolve(input);
-                        }
-                    }
-                }
-            );
-        });
+            {
+                history: history,
+                tokenHook: self.tokenizer,
+                autoCompleteHint: true,
+                autoComplete: self.getAutoCompleteData()
+            },
+            (err, input) => {
+            if( self.isBusy ){
+            self.resolver = resolve;
+        }
+    else {
+            if (err)
+                reject(err);
+            else {
+                resolve(input);
+            }
+        }
+    }
+    );
+    });
     }
 
     execute(code){
@@ -78,8 +81,10 @@ class AppHook extends Hook{
                             {cmd: "-a, --args <args>", desc: "Arguments to the C program"},
                             {cmd: "-t, --tags <tags>", desc: "The tags argument to pass to the JNodes"},
                             {cmd: "-d, --devices <number>", desc: "Launch <number> number of C-Nodes"},
-                            {cmd: "-f, --focus <level>", desc: "Focus on either the device, fog or cloud"},
+                            {cmd: "-f, --focus <level>", desc: "Focus on either the device, fog or cloud or all or none"},
+                            {cmd: "-F, --force", desc: "Force start App even if one with same name is already running"},
                             {cmd: "-l, --launch", desc: "Launch terminals for each running component"},
+                            {cmd: "-j, --js <filename>", desc: "The name of the js file to be run by the JAMScript runtime. Useful if there are several js files in the App"},
                             {cmd: "--no-flush", desc: "Do not flush the redis database"},
                             {cmd: "--no-compile", desc: "Do not compile the app before running"},
                             {cmd: "--no-fog", desc: "Do not run the fog component"},
@@ -97,7 +102,7 @@ class AppHook extends Hook{
                         return;
                     }
 
-                    path = tokens.path;
+                    let path = tokens.path;
                     let appName = tokens.name;
 
                     if (!path || !appName) {
@@ -115,28 +120,85 @@ class AppHook extends Hook{
 
                     //this.isBusy = true;
                     this.writeToHistory(code);
-
                     let compile = tokens.compile !== false;
 
-                    this._startRedisServer(6379, false);
+                    //check if an app with the specified name is already running
+                    if( apps[appName] && !tokens.force ){
+                        this.terminal.magenta(`An app with the name "${appName}" is already running!`);
+                        console.log();
+                        return;
+                    }
+                    if( apps[appName] ){
+                        this.terminal.yellow(`Warning: Forcing already running App "${appName}"...`);
+                        console.log();
+                    }
 
-                    //stop already running applications is there are
-                    //this.housekeeping();
+
+                    //find the javascript file to run
+                    let jsFile = "";
+                    let cFile = "";
+                    if( tokens.js )
+                        jsFile = tokens.js;
+                    else{   //read the directory and find the first js file
+                        let fileList = fs.readdirSync(npath.resolve(tokens.path));
+                        for( let aFile of fileList ){
+                            let stats = fs.lstatSync(npath.join(npath.resolve(tokens.path), aFile));
+                            if( !stats.isDirectory() && aFile.toLowerCase().endsWith(".js") ){
+                                jsFile = aFile;
+                                break;
+                            }
+                        }
+                    }
+
+                    if( jsFile === "" ){
+                        self.terminal.red("Unable to find a Javascript file in the specified path");
+                        console.log();
+                        return;
+                    }
+
+                    let jsFileName = jsFile.substring(0, jsFile.lastIndexOf("."));
+
+                    let fileList = fs.readdirSync(npath.resolve(tokens.path));
+                    for( let aFile of fileList ){
+                        let stats = fs.lstatSync(npath.join(npath.resolve(tokens.path), aFile));
+                        if( !stats.isDirectory() && aFile.toLowerCase().endsWith(".c") ){
+                            cFile = aFile;
+                            break;
+                        }
+                    }
+
+                    if( cFile === "" ){
+                        self.terminal.red("Unable to find a C program file in the specified path");
+                        console.log();
+                        return;
+                    }
+
+                    tokens.js = jsFile;
+                    tokens.jsFile = jsFile;
+                    tokens.jsFileName = jsFileName;
+
+
+                    var app = {name: appName, path: path, rpath: npath.resolve(path), code: code, tokens: tokens, cNodes: [],
+                        jNodes: [], redises: [], redisPorts: []};
+                    apps[appName] = app;
+
+                    //since all C nodes are currently on this port
+                    //this._startRedisServer(6379, tokens.flush !== false, app);
+
 
                     //compile the app if specified
                     if (compile) {
                         console.log("Compiling App...");
                         cmd.run(`
                         cd ${npath.resolve(tokens.path)}
-                        JS_FILE_NAME=$(ls *.js | cut -d \\. -f 1)
-                        rm $\{JS_FILE_NAME\}.jxe
-                        rm -rf ${npath.resolve(tokens.path)}/$\{JS_FILE_NAME\}_${tokens.name}
+                        rm ${tokens.jsFileName}.jxe
+                        rm -rf ${npath.resolve(tokens.path)}/${tokens.jsFileName}_${tokens.name}
                         `);
 
                         cmd.get(
                             `
                         cd ${npath.resolve(tokens.path)}
-                        jamc *
+                        jamc ${cFile} ${jsFile}
                         `,
                             function (err, data, stderr) {
                                 //console.log(data);
@@ -152,30 +214,118 @@ class AppHook extends Hook{
                                     console.log();
                                 }
                                 else
-                                    console.log("Compile successful. Running App...");
+                                    console.log(`Compile successful. Running the "${appName}" App...`);
 
-                                setTimeout(() => self._launchApp(tokens), 1000);
+                                setTimeout(() => self._launchApp(app), 1000);
                             }
                         )
                     }
                     else
-                        this._launchApp(tokens);
+                        this._launchApp(app);
 
 
                     break;
-                case "stop":
-                    this.writeToHistory(code);
-                    if( jNodes.length == 0 && cNodes.length == 0 ){
+                case "apps":    //see the name of all running apps
+                    let keys = Object.keys(apps);
+                    if( keys.length === 0 ){
                         console.log("No Application is currently running");
                         return;
                     }
-                    console.log("Stopping Running Application...");
-                    this.housekeeping();
-                    setTimeout(() => {
-                        console.log();
-                        self.resolver("\n");
-                        self.isBusy = false;
-                    }, 500);
+
+                    console.log("The following application(s) are currently running:");
+                    for( let key of keys )
+                        console.log(key);
+
+                    break;
+                case "kill":
+                    var build = {
+                        cmd: "kill <app>",
+                        desc: "Stops the running application with the name <app> and all used redis servers. If all is passed, all running apps will be stopped",
+                        opts: [
+                            {cmd: "-h, --help", desc: "See usage help"}
+                        ],
+                        code: code
+                    };
+                    tokens = this.parse(build);
+
+                    if (tokens.help) { //if help was called
+                        this.printHelp(build);
+                        return;
+                    }
+
+                    if( !tokens.app ){
+                        console.log("Please specify the App to stop");
+                        this.printHelp(build);
+                        return;
+                    }
+
+                    this.writeToHistory(code);
+
+                    if( Object.keys(apps).length === 0 ){
+                        console.log("No Application is currently running");
+                        return;
+                    }
+
+                    if( tokens.app === "all" ) {
+                        console.log("Killing all running Applications...");
+                        this.disconnect();
+                    }
+                    else{
+                        if( apps[tokens.app] ){
+                            console.log("Killing " + tokens.app + " ...");
+                            this._appHousekeeping(apps[tokens.app], true);
+                            this._appDisconnect(apps[tokens.app]);
+                        }
+                        else{
+                            self.terminal.yellow("There is no currently running application with the name: " + tokens.app);
+                            console.log();
+                        }
+                    }
+
+                    break;
+                case "stop":
+                    var build = {
+                        cmd: "stop <app>",
+                        desc: "Stops the running application with the name <app> leaving all redis servers running. If all is passed, all running apps will be stopped",
+                        opts: [
+                            {cmd: "-h, --help", desc: "See usage help"}
+                        ],
+                        code: code
+                    };
+                    tokens = this.parse(build);
+
+                    if (tokens.help) { //if help was called
+                        this.printHelp(build);
+                        return;
+                    }
+
+                    if( !tokens.app ){
+                        console.log("Please specify the App to stop");
+                        this.printHelp(build);
+                        return;
+                    }
+
+                    this.writeToHistory(code);
+
+                    if( Object.keys(apps).length === 0 ){
+                        console.log("No Application is currently running");
+                        return;
+                    }
+
+                    if( tokens.app === "all" ) {
+                        console.log("Stopping all running Applications...");
+                        this.housekeeping();
+                    }
+                    else{
+                        if( apps[tokens.app] ){
+                            console.log("Stopping " + tokens.app + " ...");
+                            this._appHousekeeping(apps[tokens.app]);
+                        }
+                        else{
+                            self.terminal.yellow("There is no currently running application with the name: " + tokens.app);
+                            console.log();
+                        }
+                    }
 
                     break;
                 case "redis":
@@ -381,7 +531,8 @@ class AppHook extends Hook{
         }
     }
 
-    _launchApp(tokens){
+    _launchApp(app){
+        let tokens = app.tokens;
         let args = tokens.args ? " " + tokens.args.split(",").join(" ").trim() : "";
         let tags = " ";
         if( tokens.tags && Object.prototype.toString.call(tokens.tags) === '[object String]' )
@@ -391,7 +542,7 @@ class AppHook extends Hook{
 
         let devices = tokens.devices || 1;
         let launch = tokens.launch;
-        let focus = tokens.focus || "all";
+        let focus = tokens.focus || "none";
         let flush = tokens.flush !== false;
         let fog = tokens.fog !== false;
         let cloud = tokens.cloud !== false;
@@ -401,7 +552,7 @@ class AppHook extends Hook{
 
 
         //start the device JNode. This will always have the default 6379 port because currently the CNode has been restricted to that
-        this._startJNode(redis, mqtt, flush, tokens, "device", tags);
+        this._startJNode(redis, mqtt, flush, tokens, "device", tags, app);
 
         //start the C devices
         setTimeout(function(){
@@ -409,17 +560,15 @@ class AppHook extends Hook{
                 (function(id){
                     cmd.run(`
                         cd ${npath.resolve(tokens.path)}
-                        JS_FILE_NAME=$(ls *.js | cut -d \\. -f 1)
-                        cd ${npath.resolve(tokens.path)}/$\{JS_FILE_NAME\}_${tokens.name}/
+                        cd ${npath.resolve(tokens.path)}/${tokens.jsFileName}_${tokens.name}/
                         chmod +x a.out
                     `);
 
                     let cNode = cmd.get(`
                     cd ${npath.resolve(tokens.path)}
-                    JS_FILE_NAME=$(ls *.js | cut -d \\. -f 1)
-                    cd ${npath.resolve(tokens.path)}/$\{JS_FILE_NAME\}_${tokens.name}/
+                    cd ${npath.resolve(tokens.path)}/${tokens.jsFileName}_${tokens.name}/
                     chmod +x a.out
-                    ${npath.resolve(tokens.path)}/$\{JS_FILE_NAME\}_${tokens.name}/a.out -n ${id} -a ${tokens.name} node${id}${args}
+                    ${npath.resolve(tokens.path)}/${tokens.jsFileName}_${tokens.name}/a.out -n ${id} -a ${tokens.name} node${id}${args}
                     `, function(err, stdout, stderr){
                         if( err && stderr ) {
                             console.log(`CNode ${id} reported error:`);
@@ -459,9 +608,15 @@ class AppHook extends Hook{
                         //     }
                         // );
                     }
-                    cNodes.push(cNode);
+                    app.cNodes.push({
+                        node: cNode,
+                        id: id,
+                        fullID: "node" + id
+                    });
                 })(i + 1);
             }
+
+            //self.copyFiles(tokens);
         }, 1000);
 
 
@@ -471,23 +626,35 @@ class AppHook extends Hook{
 
         //start the fog if supported
         if( fog ){
-            this._startJNode(redis, mqtt, flush, tokens, "fog", tags);
+            this._startJNode(redis, mqtt, flush, tokens, "fog", tags, app);
             redis += 10;
             mqtt += 10;
         }
 
         //start the cloud if supported
         if( cloud ){
-            this._startJNode(redis, mqtt, flush, tokens, "cloud", tags);
+            this._startJNode(redis, mqtt, flush, tokens, "cloud", tags, app);
         }
 
     }
 
-    _startJNode(redis, mqtt, flush, tokens, level, tags){
-        let focus = tokens.focus || "all";
+    copyFiles(tokens){
+        //check if there are other files in the folder that needs to be copied
+        let fileList = fs.readdirSync(npath.resolve(tokens.path));
+        for( let aFile of fileList ){
+            let stats = fs.lstatSync(npath.join(npath.resolve(tokens.path), aFile));
+            if( !stats.isDirectory() && !aFile.endsWith(".jxe") ){
+                //TODO we could exclude the C and JS files but there may not be any need to
+                fs.createReadStream(npath.join(npath.resolve(tokens.path), aFile)).pipe(fs.createWriteStream(npath.join(npath.resolve(tokens.path), tokens.jsFileName + '_' + tokens.name, aFile)));
+            }
+        }
+    }
+
+    _startJNode(redis, mqtt, flush, tokens, level, tags, app){
+        let focus = tokens.focus || "none";
         var self = this;
 
-        this._startRedisServer(redis, flush);
+        this._startRedisServer(redis, flush, app);
         (function(r, m){
             setTimeout(function(){
                 var levelTag = "";
@@ -500,8 +667,7 @@ class AppHook extends Hook{
 
                 var node = cmd.get(`
                     cd ${npath.resolve(tokens.path)}
-                    JS_FILE_NAME=$(ls *.js | cut -d \\. -f 1)
-                    jrun ${npath.resolve(tokens.path)}/$\{JS_FILE_NAME\}.jxe --app=${tokens.name} --data=127.0.0.1:${r}${port}${levelTag} --tags="${tags}"
+                    jrun ${npath.resolve(tokens.path)}/${tokens.jsFileName}.jxe --app=${tokens.name} --data=127.0.0.1:${r}${port}${levelTag} --tags="${tags}"
                     `, function(err, stdout, stderr){
                     if( err ) {
                         console.log(`The ${level} JNode reported error:`);
@@ -526,39 +692,66 @@ class AppHook extends Hook{
                     );
                 }
 
-                jNodes.push(node);
+                app.jNodes.push({
+                    node: node,
+                    level: level,
+                    redis: r,
+                    mqtt: m,
+                    pid: node.pid
+                });
             }, level == "device" ? 100 : 200);
         })(redis, mqtt);
     }
 
     disconnect(){
         //terminate all running apps
-        this.housekeeping();
+        this.housekeeping(true);
 
-        //close all started redis servers
-        if( redises.length > 0 )
-            console.log("\nShutting down started redis servers...");
-        for( let port of redisPorts )
-            cmd.run(`redis-cli -h 127.0.0.1 -p ${port} SHUTDOWN NOSAVE`);
-        for( let redis of redises )
-            this._killNode(redis);
-        redises = [];
+        let keys = Object.keys(apps);
+        for( let key of keys ) {
+            this._appDisconnect(apps[key]);
+            delete apps[key];
+        }
     }
 
-    housekeeping(){
-        for( let jNode of jNodes )
-            this._killNode(jNode);
-        for( let cNode of cNodes )
-            this._killNode(cNode);
-        jNodes = [];
-        cNodes = [];
+    _appDisconnect(app){
+        //close all started redis servers
+        if( app.redises.length > 0 )
+            console.log(`\nShutting down started redis servers for the App "${app.name}"...`);
+        for( let port of app.redisPorts )
+            cmd.run(`redis-cli -h 127.0.0.1 -p ${port} SHUTDOWN NOSAVE`);
+        for( let redis of app.redises )
+            this._killNode(redis);
+    }
 
-        if( path )
-            cmd.run(`
+    housekeeping(wait){
+        let keys = Object.keys(apps);
+        for( let key of keys ) {
+            this._appHousekeeping(apps[key], wait);
+        }
+    }
+
+    _appHousekeeping(app, wait){
+        let path = app.path;
+        let jNodes = app.jNodes;
+        let cNodes = app.cNodes;
+
+        for( let jNode of jNodes )
+            this._killNode(jNode.node);
+        for( let cNode of cNodes )
+            this._killNode(cNode.node);
+
+        cmd.run(`
             ps aux | grep -ie ${npath.resolve(path)} | awk '{print $2}' | xargs kill -2
             ps aux | grep -ie ${npath.resolve(path)} | awk '{print $2}' | xargs kill -2
             ps aux | grep -ie ${npath.resolve(path)} | awk '{print $2}' | xargs kill -9
             `);
+
+        app.jNodes = [];
+        app.cNodes = [];
+
+        if( !wait )
+            delete apps[app.name];
     }
 
     _killNode(node){
@@ -572,7 +765,7 @@ class AppHook extends Hook{
         `);
     }
 
-    _startRedisServer(port, flush){
+    _startRedisServer(port, flush, app){
         //check if this redis server is already running
         cmd.get(
             `redis-cli -h 127.0.0.1 -p ${port} PING`,
@@ -580,15 +773,15 @@ class AppHook extends Hook{
                 if( err ){
                     console.log();
                     //no redis was found so let us start a redis server at this port
-                    redisPorts.push(port);
-                    let process = cmd.run(`redis-server --port ${port}`);
-                    redises.push(process);
+                    app.redisPorts.push(port);
+                    let proc = cmd.run(`redis-server --port ${port}`);
+                    app.redises.push(proc);
                     console.log(`Started Redis Server on port ${port}`);
+                    return;
                 }
-                else if( flush ) {
+                if( flush )
                     cmd.run(`redis-cli -h 127.0.0.1 -p ${port} FLUSHALL`);
-                    console.log(`Using Redis Server on port ${port}`);
-                }
+                console.log(`Using Redis Server on port ${port}`);
             }
         );
     }

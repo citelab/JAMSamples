@@ -78,7 +78,8 @@ if( JAMManager.isDevice ){
             request.getMyDataStream().log(data);   //since there exists only one c at the device level. One pair for each car
         });
     });
-    server.listen(JAMManager.port - 0 + 1);    //get the data depot port and add one to it
+    //JAMManager.port
+    server.listen(jamsys.getMQTT() - 0 + 1);    //get the data depot port and add one to it
 
     express.get("/", (req, res) => res.sendFile(__dirname + "/car.html"));
     express.get("/*", (req, res) => res.sendFile(__dirname + req.url));
