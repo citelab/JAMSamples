@@ -46,9 +46,9 @@ void sendSensorData(){
     while ((read = getline(&line, &len, fp)) != -1) {
         //split line to the different parts
         char* p = strtok(line, ",");
-        char* sd_front = p;
+        float sd_front = atof(p);
         p = strtok (NULL, ",");
-        char* sd_left = p;
+        float sd_left = atof(p);
         p = strtok (NULL, ",");
         char* _class = p;
 

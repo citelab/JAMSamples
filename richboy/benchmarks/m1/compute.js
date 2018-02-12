@@ -3,7 +3,7 @@ jdata{
         float sd_front;
         float sd_left;
         char* _class;
-        int nodeID;
+        char* nodeID;
     } sensorData as logger(fog);
 
     //sensorDataFlow as flow of sensorData
@@ -24,7 +24,7 @@ var Neuron = synaptic.Neuron,
     Trainer = synaptic.Trainer;
 
 var directions = ['Move-Forward', 'Sharp-Right-Turn', 'Slight-Right-Turn', 'Sharp-Left-Turn', 'Slight-Left-Turn'];
-var minNumberOfDevices = 1;//just once device sensor is available now.
+var minNumberOfDevices = 1;//just once drone device is available now.
 var deviceId = 0;
 
 // jsync function to assign id's to devices
@@ -32,6 +32,11 @@ jsync function getId() {
     var id = ++deviceId;
     return id + "";
 }
+
+if( JAMManager.isDevice )
+    console.log("device has started...");
+else
+    console.log("Fog has started...");
 
 sensorData.subscribe((key, entry, stream) => {
     if( entry.log._class === "" )   //we have seen the end of sensor data for this stream
