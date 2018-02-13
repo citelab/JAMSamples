@@ -58,7 +58,7 @@ size_t len = 0;
 ssize_t read;
 fp = fopen("./sensor_readings_2.data", "r");
 if(fp == 0) {
-printf("Unable to read the sensor data file");
+printf("Unable to read the sensor data file\n");
 return;
 }
 struct timeval tv1;
@@ -72,6 +72,7 @@ p = strtok(0, ",");
 float sd_left = atof(p);
 p = strtok(0, ",");
 char *_class = p;
+printf("Sending... data..\n");
 jamdata_log_to_server("global", "sensorData", jamdata_encode("ffss", "sd_front", sd_front, "sd_left", sd_left, "_class", _class, "nodeID", nodeID), 1);
 usleep(sendWait);
 }

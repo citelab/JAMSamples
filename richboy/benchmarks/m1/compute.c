@@ -34,7 +34,7 @@ void sendSensorData(){
 
     fp = fopen("./sensor_readings_2.data", "r");
     if (fp == NULL){
-        printf("Unable to read the sensor data file");
+        printf("Unable to read the sensor data file\n");
         return;
     }
 
@@ -60,6 +60,7 @@ void sendSensorData(){
 //        trackers[tag].text = line;
 //        trackers[tag].tv1 = tv1;
         //log line to the device J
+	printf("Sending... data..\n");
         sensorData = {.sd_front:sd_front, .sd_left:sd_left, ._class:_class, .nodeID:nodeID};//, .index:tag
 
         usleep(sendWait);
