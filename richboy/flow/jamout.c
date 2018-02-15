@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 jamstate_t *js;
+int jam_error = 0;
 jactivity_t *jact;
 typedef char* jcallback;
 char jdata_buffer[20];

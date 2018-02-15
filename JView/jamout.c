@@ -13,11 +13,13 @@ char dev_tag[32] = { 0 };
 int ndevices;
 int user_main() {
 while(1) {
-sprintf(jdata_buffer, "%f", rand() % 100 + 0.1 * (rand() % 10));
+float q = rand() % 100 + 0.1 * (rand() % 10);
+sprintf(jdata_buffer, "%f", q);
 jamdata_log_to_server("global", "temp", jdata_buffer, 0);
-sprintf(jdata_buffer, "%i", rand() % 100);
+float p = rand() % 100 * 0.1;
+sprintf(jdata_buffer, "%f", p);
 jamdata_log_to_server("global", "pos", jdata_buffer, 0);
-sleep(1);
+sleep(5);
 }
 }
 
