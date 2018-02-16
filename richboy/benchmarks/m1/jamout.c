@@ -22,6 +22,7 @@ float sd_front;
 float sd_left;
 char* _class;
 char* nodeID;
+int id;
 };
 struct announcer {
 char* nodeID;
@@ -61,25 +62,33 @@ if(fp == 0) {
 printf("Unable to read the sensor data file\n");
 return;
 }
+while(1) {
+char pack[100];
+snprintf(pack, sizeof(pack), "%s,%s,%d", "0.0,0.0,_", nodeID, -1);
+jamdata_log_to_server("global", "sensePack", pack, 0);
+break;
+}
 struct timeval tv1;
 gettimeofday(&tv1, 0);
 trackers[0].text = "";
 trackers[0].tv1 = tv1;
+printf("Before sending data...\n");
+int id = 0;
 while((read = getline(&line, &len, fp)) != -1) {
-char *p = strtok(line, ",");
-float sd_front = atof(p);
-p = strtok(0, ",");
-float sd_left = atof(p);
-p = strtok(0, ",");
-char *_class = p;
+id++;
+char pack[100];
+snprintf(pack, sizeof(pack), "%s,%s,%d", line, nodeID, id);
 printf("Sending... data..\n");
-jamdata_log_to_server("global", "sensorData", jamdata_encode("ffss", "sd_front", sd_front, "sd_left", sd_left, "_class", _class, "nodeID", nodeID), 1);
+jamdata_log_to_server("global", "sensePack", pack, 0);
 usleep(sendWait);
 }
 gettimeofday(&tv1, 0);
 trackers[1].text = "";
 trackers[1].tv1 = tv1;
-jamdata_log_to_server("global", "sensorData", jamdata_encode("ffss", "sd_front", "", "sd_left", "", "_class", "", "nodeID", nodeID), 1);
+char pack[100];
+snprintf(pack, sizeof(pack), "%s,%s,%d", "0.0,0.0,", nodeID, -1);
+jamdata_log_to_server("global", "sensePack", pack, 0);
+printf("Done sending sensor data (%d)...\n", id);
 fclose(fp);
 if(line) free(line);
 }
@@ -96,8 +105,10 @@ sleep(3);
 sendSensorData();
 struct announcer announcement;
 while(1) {
+printf("Waiting for broadcast...\n");
 jamdata_decode("ss", get_bcast_next_value(announce), 2, &announcement, offsetof(struct announcer, nodeID), offsetof(struct announcer, message));
 
+printf("Received broadcast!!\n");
 if(strcmp(announcement.nodeID, nodeID) == 0) {
 struct timeval tv2;
 gettimeofday(&tv2, 0);
@@ -110,6 +121,7 @@ return 1;
 }
 fprintf(f, "Time before sending sensor results: %f seconds; Time after sending sensor results: %f seconds\n", (double)(trackers[0].tv2.tv_usec - trackers[0].tv1.tv_usec) / 1000000 + (double)(trackers[0].tv2.tv_sec - trackers[0].tv1.tv_sec), (double)(trackers[1].tv2.tv_usec - trackers[1].tv1.tv_usec) / 1000000 + (double)(trackers[1].tv2.tv_sec - trackers[1].tv1.tv_sec));
 fclose(f);
+break;
 }
 usleep(receiveWait);
 }

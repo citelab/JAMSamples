@@ -38,19 +38,35 @@ void sendSensorData(){
         return;
     }
 
+    //sensorData = {.sd_front:0.0, .sd_left:0.0, ._class:"_", .nodeID:nodeID, .id:-1};
+    while(1){
+        char pack[100];
+        snprintf(pack,sizeof(pack),"%s,%s,%d","0.0,0.0,_", nodeID, -1);
+        sensePack = pack;
+        break;
+    }
+    //sleep(3);
+
     struct timeval  tv1;
     gettimeofday(&tv1, NULL);
     trackers[0].text = "";
     trackers[0].tv1 = tv1;
 
+    printf("Before sending data...\n");
+
+    int id = 0;
     while ((read = getline(&line, &len, fp)) != -1) {
+        id++;
         //split line to the different parts
-        char* p = strtok(line, ",");
-        float sd_front = atof(p);
-        p = strtok (NULL, ",");
-        float sd_left = atof(p);
-        p = strtok (NULL, ",");
-        char* _class = p;
+//        char* p = strtok(line, ",");
+//        float sd_front = atof(p);
+//        p = strtok (NULL, ",");
+//        float sd_left = atof(p);
+//        p = strtok (NULL, ",");
+//        char* _class = p;
+
+        char pack[100];
+        snprintf(pack,sizeof(pack),"%s,%s,%d",line, nodeID, id);
 
 //        int tag = tracking;
 //        ++tracking;
@@ -60,8 +76,9 @@ void sendSensorData(){
 //        trackers[tag].text = line;
 //        trackers[tag].tv1 = tv1;
         //log line to the device J
-	printf("Sending... data..\n");
-        sensorData = {.sd_front:sd_front, .sd_left:sd_left, ._class:_class, .nodeID:nodeID};//, .index:tag
+	    printf("Sending... data..\n");
+        //sensorData = {.sd_front:sd_front, .sd_left:sd_left, ._class:_class, .nodeID:nodeID, .id:id};//, .index:tag
+        sensePack = pack;
 
         usleep(sendWait);
     }
@@ -70,7 +87,12 @@ void sendSensorData(){
     trackers[1].text = "";
     trackers[1].tv1 = tv1;
     //log line to the device J
-    sensorData = {.sd_front:"", .sd_left:"", ._class:"", .nodeID:nodeID};
+    //sensorData = {.sd_front:0.0, .sd_left:0.0, ._class:"", .nodeID:nodeID, .id:-1};
+    char pack[100];
+    snprintf(pack,sizeof(pack),"%s,%s,%d","0.0,0.0,", nodeID, -1);
+    sensePack = pack;
+
+    printf("Done sending sensor data (%d)...\n", id);
 
     fclose(fp);
     if (line)
@@ -98,7 +120,9 @@ int main(int argc, char** argv){
     //wait for broadcast
     struct announcer announcement;
     while(1){
+        printf("Waiting for broadcast...\n");
         announcement = announce;
+        printf("Received broadcast!!\n");
         if( strcmp(announcement.nodeID, nodeID) == 0 ){
             struct timeval  tv2;
             gettimeofday(&tv2, NULL);
@@ -119,6 +143,7 @@ int main(int argc, char** argv){
                               (double) (trackers[1].tv2.tv_sec - trackers[1].tv1.tv_sec));
 
              fclose(f);
+             break;
         }
         usleep(receiveWait);
     }
