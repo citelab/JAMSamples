@@ -15,7 +15,7 @@ jview {
     page2 as page {
         disp2 is display {
             type: graph;
-            title: 'Temp';
+            title: 'Position';
             source: pos;
             options: "blah2 blah2";
         }
