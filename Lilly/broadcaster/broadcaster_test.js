@@ -1,5 +1,7 @@
 jdata {
     int y as broadcaster;
+    float x as broadcaster;
+    char *z as broadcaster;
     
     struct basket{
     	int apple;
@@ -16,19 +18,21 @@ jdata {
 var i=0;
 
 setInterval(function() {
-    if(i==10) return;
+
     y.broadcast(Math.floor((Math.random() * 100) + 1));
-    
+    x.broadcast((Math.random() * 100) + 1);
+    z.broadcast("Hello...");
+
     myBasket.broadcast({
     	apple: Math.floor(Math.random() * 100),
-    	pear : Math.random() * 1000
+    	pear : 3.4
     });
     
     myBag.broadcast({
-        pen: Math.floor(Math.random() * 10),
+        pen: -1 * Math.floor(Math.random() * 10000000),
         water: Math.random() * 100,
-    	book: Math.random() * 100
+	book: Math.floor(Math.random() * 100)
     });
 
     i++;
-}, 1000);
+}, 100);

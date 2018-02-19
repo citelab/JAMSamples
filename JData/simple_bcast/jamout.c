@@ -15,9 +15,10 @@ jambroadcaster_t *y;
 int user_main() {
 int x;
 printf("Started the C program \n");
+int i = 1;
 while(1) {
-x = atoi(get_bcast_next_value(y));
-printf("X = %d\n", x);
+x = (get_bcast_next_value(y));
+printf("i = %d, X = %d\n", i++, x);
 }
 }
 
