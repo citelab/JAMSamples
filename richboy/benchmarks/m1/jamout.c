@@ -129,7 +129,7 @@ return 0;
 }
 
 void user_setup() {
-announce = jambroadcaster_init(BCAST_RETURNS_NEXT, "global", "announce");
+announce = jambroadcaster_init(BCAST_RETURNS_NEXT, "global.cbor", "announce");
 }
 
 void jam_run_app(void *arg) {
