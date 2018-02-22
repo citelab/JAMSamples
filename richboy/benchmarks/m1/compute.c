@@ -118,12 +118,12 @@ int main(int argc, char** argv){
     sendSensorData();
 
     //wait for broadcast
-    struct announcer announcement;
+    //struct announcer announcement;
     while(1){
         printf("Waiting for broadcast...\n");
-        announcement = announce;
+        char* announcement = announcer;
         printf("Received broadcast!!\n");
-        if( strcmp(announcement.nodeID, nodeID) == 0 ){
+        if( strcmp(announcement, nodeID) == 0 ){//strcmp(announcement.nodeID, nodeID) == 0
             struct timeval  tv2;
             gettimeofday(&tv2, NULL);
             trackers[0].tv2 = tv2;
@@ -145,7 +145,7 @@ int main(int argc, char** argv){
              fclose(f);
              break;
         }
-        usleep(receiveWait);
+        //usleep(receiveWait);
     }
 
     return 0;

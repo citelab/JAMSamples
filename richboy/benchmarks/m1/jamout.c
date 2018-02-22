@@ -24,11 +24,7 @@ char* _class;
 char* nodeID;
 int id;
 };
-struct announcer {
-char* nodeID;
-char* message;
-};
-jambroadcaster_t *announce;
+jambroadcaster_t *announcer;
 char* getId() {
 jam_error = 0; 
 arg_t *res = jam_rexec_sync(js, "true", 0, "getId", "");
@@ -103,13 +99,11 @@ strcat(fileName, "_timing.txt");
 printf("%s %d %d\n", nodeID, sendWait, receiveWait);
 sleep(3);
 sendSensorData();
-struct announcer announcement;
 while(1) {
 printf("Waiting for broadcast...\n");
-jamdata_decode("ss", get_bcast_next_value(announce), 2, &announcement, offsetof(struct announcer, nodeID), offsetof(struct announcer, message));
-
+char *announcement = get_bcast_char(get_bcast_next_value(announcer));
 printf("Received broadcast!!\n");
-if(strcmp(announcement.nodeID, nodeID) == 0) {
+if(strcmp(announcement, nodeID) == 0) {
 struct timeval tv2;
 gettimeofday(&tv2, 0);
 trackers[0].tv2 = tv2;
@@ -123,13 +117,12 @@ fprintf(f, "Time before sending sensor results: %f seconds; Time after sending s
 fclose(f);
 break;
 }
-usleep(receiveWait);
 }
 return 0;
 }
 
 void user_setup() {
-announce = jambroadcaster_init(BCAST_RETURNS_NEXT, "global", "announce");
+announcer = jambroadcaster_init(BCAST_RETURNS_NEXT, "global", "announcer");
 }
 
 void jam_run_app(void *arg) {

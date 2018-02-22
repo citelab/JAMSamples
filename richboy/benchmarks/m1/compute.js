@@ -11,10 +11,12 @@ jdata{
 
     //sensorDataFlow as flow with sensorDataFunc of sensorData;
 
-    struct announcer{
-        char* nodeID;
-        char* message;
-    } announce as broadcaster;
+    // struct announcer{
+    //     char* nodeID;
+    //     char* message;
+    // } announce as broadcaster;
+
+    char* announcer as broadcaster;
 }
 
 var sensorDataFlow;
@@ -39,10 +41,15 @@ jsync function getId() {
     return id + "";
 }
 
-if( JAMManager.isDevice )
+if( JAMManager.isDevice ) {
     console.log("device has started...");
+
+}
 else
     console.log("Fog has started...");
+
+sensePack.setTransformer((input) => {console.log(input.replace(/\s/g, '')); return input.replace('Move-Forward', "Move-Kpai");});
+announcer.addHook((data) => {console.log(data);});
 
 if( JAMManager.isFog ) {
     sensePack.subscribe((key, entry, stream) => {
@@ -151,7 +158,7 @@ function processArrayData(dataArray){
 
     console.log("Done training!");
 
-    announce.broadcast({nodeID: dataArray[0].split(",")[3] + "", message: "done"});
+    announcer.broadcast(dataArray[0].split(",")[3]);//({nodeID: dataArray[0].split(",")[3] + "", message: "done"});
     //console.log(myNetwork.neurons());
 }
 
