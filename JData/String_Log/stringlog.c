@@ -3,11 +3,13 @@ int main()
 {
   char *names[10] = {"david", "mayer", "justin", "richard", "lekan", "ben", "owen", "nicholas", "karu", "clark"};
   int i;
+  char buf[32];
 
   for (i = 0; i < 1000; i++) {
-    name = names[i % 10];
-    printf("Wrote .. name: %s\n", names[i % 10]);
-    sleep(1);
+    sprintf(buf, "%d-%s", i, names[i % 10]);
+    name = buf; 
+    printf("Wrote .. name: %s\n", buf);
+    sleep(5);
   }
 
 }

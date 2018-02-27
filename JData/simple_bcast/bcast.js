@@ -10,9 +10,9 @@ jdata {
 var count =10;
 
 
-function sendbcast() {
+jasync {fogonly} function sendbcast() {
    console.log("Sending broadcast....", count);
-   var msg = "hello " + count
+   var msg = "hello-" + count
    y.broadcast(msg);
 }
 

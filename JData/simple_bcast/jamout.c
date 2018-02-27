@@ -13,12 +13,12 @@ char dev_tag[32] = { 0 };
 int ndevices;
 jambroadcaster_t *y;
 int user_main() {
-int x;
+char *x;
 printf("Started the C program \n");
 int i = 1;
 while(1) {
-x = (get_bcast_next_value(y));
-printf("i = %d, X = %d\n", i++, x);
+x = get_bcast_char(get_bcast_next_value(y));
+printf("i = %d, X = %s\n", i++, x);
 }
 }
 
