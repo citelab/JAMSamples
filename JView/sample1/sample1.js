@@ -1,6 +1,8 @@
 jdata {
     float temp as logger;
     int pos as logger;
+    int slid as broadcaster;
+    int bTon as broadcaster;
 }
 
 jview {
@@ -18,6 +20,22 @@ jview {
             title: 'Position';
             source: pos;
             options: "blah2 blah2";
+        }
+    }
+    page3 as page {
+        disp3 is controller {
+            type: slider;
+            title: 'slidy';
+            options: 'blah';
+            sink: slid;
+        }
+    }
+    page4 as page {
+        disp4 is controller {
+            type: button;
+            title: 'butty';
+            options: 'blah';
+            sink: bTn;
         }
     }
 }
