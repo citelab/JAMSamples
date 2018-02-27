@@ -21,7 +21,8 @@ struct tracker{
 struct tracker trackers[2];
 char fileName[40];
 int tracking = 0;
-
+int processCount = 200; //The number of items each node is to process
+int finalCount;     //The actual number of items each node processed
 
 //Read entries from the sensor file and send it through to the fog
 void sendSensorData(){
@@ -48,8 +49,15 @@ void sendSensorData(){
     printf("Before sending data...\n");
 
     int id = 0;
+    int total = 0;
     while ((read = getline(&line, &len, fp)) != -1) {
+        if( id < (atoi(nodeID) - 1) * processCount ){    //skip until we get to the data boundary for this device to process
+            id++;
+            continue;
+        }
+
         id++;
+
         if (strcmp(line, "") == 0 || strcmp(line, "\n") == 0)
             break;
         //split line to the different parts
@@ -74,10 +82,19 @@ void sendSensorData(){
 	    printf("Sending... data..\n");
         //sensorData = {.sd_front:sd_front, .sd_left:sd_left, ._class:_class, .nodeID:nodeID, .id:id};//, .index:tag
         sensePack = pack;
+        total++;
+        if( total == processCount )
+            break;
 
         usleep(sendWait);
     }
-    //add control value to signal end of sensor transfer
+    finalCount = total;
+
+    if( finalCount == 0 )   //If we started more C than is necessary
+        return;
+
+    sensePack = "done"; //Send end marker
+
     gettimeofday(&tv2, NULL);
     trackers[0].tv2 = tv2;
 
@@ -107,6 +124,9 @@ int main(int argc, char** argv){
     sendSensorData();
 
     int status = 0; //to know if we have seen the first broadcast
+
+    if( finalCount == 0 )   //If we started more C than is necessary
+        return 0;
 
     //wait for broadcast
     //struct announcer announcement;
@@ -141,6 +161,8 @@ int main(int argc, char** argv){
                      return 1;
                  }
 
+                 fprintf(f, "Total Processed: %d\n", finalCount);
+
                  fprintf(f, "(First broadcast) From time before sending sensor results: %f seconds; From time after sending sensor results: %f seconds\n",
                                   (double) (trackers[1].tv1.tv_usec - trackers[0].tv1.tv_usec) / 1000000 +
                                   (double) (trackers[1].tv1.tv_sec - trackers[0].tv1.tv_sec),
@@ -151,7 +173,7 @@ int main(int argc, char** argv){
             }
 
             //check if we have gotten to the last item
-            if( strcmp(tempID, "5456") == 0 ){
+            if( strcmp(tempID, "done") == 0 ){
                 struct timeval  tv2;
                 gettimeofday(&tv2, NULL);
                 trackers[1].tv2 = tv2;

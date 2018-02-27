@@ -1,29 +1,14 @@
 jdata{
-    struct sensorData{
-        float sd_front;
-        float sd_left;
-        char* _class;
-        char* nodeID;
-        int id;
-    } sensorData as logger(fog);
-
     char* sensePack as logger(fog);
-
-    //sensorDataFlow as flow with sensorDataFunc of sensorData;
-
-    // struct announcer{
-    //     char* nodeID;
-    //     char* message;
-    // } announce as broadcaster;
 
     char* announcer as broadcaster;
 }
 
-var sensorDataFlow;
-
 jcond{
     isFog: sys.type == "fog";
+    isDevice: sys.type == "device";
 }
+
 
 var synaptic = require('synaptic');
 var Neuron = synaptic.Neuron,
@@ -31,16 +16,28 @@ var Neuron = synaptic.Neuron,
     Network = synaptic.Network,
     Trainer = synaptic.Trainer;
 
+// create the network
+var inputLayer = new Layer(2);
+var hiddenLayer = new Layer(2);
+var outputLayer = new Layer(5);
+
+inputLayer.project(hiddenLayer);
+hiddenLayer.project(outputLayer);
+
+var myNetwork = new Network({
+    input: inputLayer,
+    hidden: [hiddenLayer],
+    output: outputLayer
+});
+
 var directions = ['Move-Forward', 'Sharp-Right-Turn', 'Slight-Right-Turn', 'Sharp-Left-Turn', 'Slight-Left-Turn'];
-var minNumberOfDevices = 1;//just once drone device is available now.
 var deviceId = 0;
-var splitIndex = Math.ceil(5456 * 0.8); //The data index which splits the training and testing data
-var myNetwork;
-var testData = [], testDataArray;
-var done = false;
+var PROCESS_COUNT = 200;    //the number of items each device will process.
+var trainCount = 0.8 * PROCESS_COUNT;
+var droneData = {}; //stores all the received data from the devices in a datastream key/array pair format
 
 // jsync function to assign id's to devices
-jsync function getId() {
+jsync {isDevice} function getId() {
     var id = ++deviceId;
     return id + "";
 }
@@ -58,92 +55,27 @@ if( JAMManager.isFog ) {
     sensePack.subscribe((key, entry, stream) => {
         console.log("received", JSON.stringify(entry.log));
 
-        var parts = entry.log.split(",");
-        if( parts[parts.length - 1] - 0 > splitIndex ) {  //store all data after the split index to be used for testing
-            testData.push(entry.log);
-            if( parts[parts.length - 1] - 0 == 5456 ){//we've gotten all the data so start broadcasting
-                testDataArray = selectTestData(testData);
-                if( done )
-                    startBroadcast(testDataArray);
-                else
-                    setTimeout(pollBroadcast, 100);
-            }
+        if( !droneData[key] )
+            droneData[key] = [];
+
+        if( entry.log == "done" ) {
+            //start training the data for this device
+            processArrayData(droneData[key], stream);
+            return;
         }
-
-
-        // if (entry.log._class === "") {  //we have seen the end of sensor data for this stream
-        //     console.log("Received end of stream marker");
-        //     processForStream(stream);
-        // }
-        // else
-        //     console.log("received ", entry.log._class);
+        else
+            droneData[key].push(entry.log);
     });
 }
 
-function pollBroadcast(){
-    if( done )
-        startBroadcast(testDataArray);
-    else
-        setTimeout(pollBroadcast, 100);
-}
-
-function startBroadcast(array){
-    console.log("In start broadcast");
-    array.forEach(function(obj, index){
-        console.log(obj.id);
-        announcer.broadcast(oneHotDecode(myNetwork.activate(obj.input)) + "," + obj.output + "," + obj.nodeID + "," + obj.id);
-    });
-    console.log("Done broadcasting!!!");
-    //sendOneBroadcast(array, 0);
-}
-
-function sendOneBroadcast(array, index){
-    if( index >= array.length ){
-        console.log("Done broadcasting!!!");
-        return;
-    }
-
-    setTimeout(function(){
-        var obj = array[index];
-        console.log(obj.id);
-        announcer.broadcast(oneHotDecode(myNetwork.activate(obj.input)) + "," + obj.output + "," + obj.nodeID + "," + obj.id);
-
-        index++;
-        sendOneBroadcast(array, index);
-    }, index == 0 ? 0 : 100);
-}
 
 
-function sensorDataFunc(inputFlow){
-    return inputFlow.discretize(Flow.from(sensePack.toIterator()).where(stream => !stream.isLocalStream).collect(), (data) => {var parts = data[0].data.split(','); return parts[parts.length - 1] - 0 === splitIndex; });
-}
-
-function processArrayData(dataArray){
-    //remove the marker/delimiter
-    dataArray.splice(dataArray.length - 1);
-
+function processArrayData(dataArray, stream){
     console.log("First element is", dataArray[0]);
-    //var randomizedDataArray = randomizeData(dataArray);
-    var trainData = selectTrainData(dataArray);
-    //var testData = selectTestData(randomizedDataArray);
+    var randomizedDataArray = randomizeData(dataArray);
+    var trainData = selectTrainData(randomizedDataArray);
+    var testData = selectTestData(randomizedDataArray);
 
-    // create the network
-    var inputLayer = new Layer(2);
-    var hiddenLayer = new Layer(2);
-    var outputLayer = new Layer(5);
-
-    inputLayer.project(hiddenLayer);
-    hiddenLayer.project(outputLayer);
-
-    //console.log("Got here");
-
-    myNetwork = new Network({
-        input: inputLayer,
-        hidden: [hiddenLayer],
-        output: outputLayer
-    });
-
-    //console.log("Also got here");
 
     // // train the network
     // var learningRate = .2;
@@ -164,25 +96,26 @@ function processArrayData(dataArray){
     //     done = true;
     // });
 
-    var results = trainer.train(trainData, {rate: .2, iterations: 20000});
+    var results = trainer.train(trainData, {rate: .2, iterations: 20000, shuffle: false});
     console.log("Done training!\n", results);
-    done = true;
+    startBroadcast(testData, stream);
+}
 
-    //announcer.broadcast(dataArray[0].split(",")[3]);//({nodeID: dataArray[0].split(",")[3] + "", message: "done"});
-    //console.log(myNetwork.neurons());
+function startBroadcast(array, stream){
+    console.log("In start broadcast");
+    array.forEach(function(obj, index){
+        //console.log(obj.id);
+        announcer.broadcast(oneHotDecode(myNetwork.activate(obj.input)) + "," + obj.expected + "," + obj.nodeID + "," + obj.id);
+    });
+    announcer.broadcast("_,_," + array[0].nodeID + ",done");    //to signal the end of broadcasting
+    console.log("Done broadcasting!!!");
 }
 
 
 var initialLoad = setInterval(function(){
-    if (sensePack.size() >= minNumberOfDevices + 1) {
+    if (sensePack.size() > 1) {
         clearInterval(initialLoad);
         console.log("Starting simulation...");
-        if( JAMManager.isFog ) {
-            sensorDataFlow = sensorDataFunc(Flow.from(sensePack));
-            sensorDataFlow.setTerminalFunction(flow => processArrayData(flow.selectFlatten().select("data").collect()));
-            sensorDataFlow.startPush();
-            //logData();
-        }
     }
     else {
         console.log("Waiting for devices to become available...", sensePack.size());
@@ -238,14 +171,9 @@ function randomizeData(array){
 }
 
 function selectTrainData(array){
-    return Flow.from(array).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: oneHotEncode(parts[2])};}).collect();
+    return Flow.from(array).limit(Math.ceil(0.8 * array.length)).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: oneHotEncode(parts[2])};}).collect();
 }
 
 function selectTestData(array){
-    return Flow.from(array).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: parts[2].replace("\n", ""), id: parts[parts.length - 1] - 0, nodeID: parts[parts.length - 2]};}).collect();
+    return Flow.from(array).skip(Math.ceil(0.8 * array.length)).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: oneHotEncode(parts[2]), expected: parts[2].replace("\n", ""), id: parts[parts.length - 1] - 0, nodeID: parts[parts.length - 2]};}).collect();
 }
-
-function logData(){//for local testing
-    Flow.fromFile("sensor_readings_2.data").merge("0.0,0.0,,1,-1").forEach((line, index) => {sensePack.getMyDataStream().log(line + ",1," + index);});
-}
-

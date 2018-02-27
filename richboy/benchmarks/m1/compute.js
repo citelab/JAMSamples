@@ -34,6 +34,10 @@ var Neuron = synaptic.Neuron,
 var directions = ['Move-Forward', 'Sharp-Right-Turn', 'Slight-Right-Turn', 'Sharp-Left-Turn', 'Slight-Left-Turn'];
 var minNumberOfDevices = 1;//just once drone device is available now.
 var deviceId = 0;
+var splitIndex = Math.ceil(5456 * 0.8); //The data index which splits the training and testing data
+var myNetwork;
+var testData = [], testDataArray;
+var done = false;
 
 // jsync function to assign id's to devices
 jsync function getId() {
@@ -43,17 +47,30 @@ jsync function getId() {
 
 if( JAMManager.isDevice ) {
     console.log("device has started...");
-
+    sensePack.setTransformer((input) => input.replace(/\s/g, '').replace('\n', ""));
 }
 else
     console.log("Fog has started...");
 
-sensePack.setTransformer((input) => {console.log(input.replace(/\s/g, '')); return input.replace('Move-Forward', "Move-Kpai");});
-announcer.addHook((data) => {console.log(data);});
+//announcer.addHook((data) => {console.log(data);});
 
 if( JAMManager.isFog ) {
     sensePack.subscribe((key, entry, stream) => {
         console.log("received", JSON.stringify(entry.log));
+
+        var parts = entry.log.split(",");
+        if( parts[parts.length - 1] - 0 > splitIndex ) {  //store all data after the split index to be used for testing
+            testData.push(entry.log);
+            if( parts[parts.length - 1] - 0 == 5456 ){//we've gotten all the data so start broadcasting
+                testDataArray = selectTestData(testData);
+                if( done )
+                    startBroadcast(testDataArray);
+                else
+                    setTimeout(pollBroadcast, 100);
+            }
+        }
+
+
         // if (entry.log._class === "") {  //we have seen the end of sensor data for this stream
         //     console.log("Received end of stream marker");
         //     processForStream(stream);
@@ -63,56 +80,42 @@ if( JAMManager.isFog ) {
     });
 }
 
-function sensorDataFunc(inputFlow){
-    return inputFlow.discretize(Flow.from(sensePack.toIterator()).where(stream => !stream.isLocalStream).collect(), (data) => {var parts = data[0].data.split(','); return parts[2] === "" || parts[2] === "_"});
+function pollBroadcast(){
+    if( done )
+        startBroadcast(testDataArray);
+    else
+        setTimeout(pollBroadcast, 100);
 }
 
-function processForStream(stream){
-    console.log("Stream size:", stream.size());
-    console.log(stream.get_value_at(0));
-    //get all the data from the stream
-    //var dataArray = Flow.from(stream).select("log").where(data => data._class !== "").collect();
-    //console.log(dataArray.length);
-    // var randomizedDataArray = randomizeData(dataArray);
-    // var trainData = selectTrainData(randomizedDataArray);
-    // var testData = selectTestData(randomizedDataArray);
-    //
-    // // create the network
-    // var inputLayer = new Layer(2);
-    // var hiddenLayer = new Layer(2);
-    // var outputLayer = new Layer(5);
-    //
-    // inputLayer.project(hiddenLayer);
-    // hiddenLayer.project(outputLayer);
-    //
-    // console.log("Got here");
-    //
-    // var myNetwork = new Network({
-    //     input: inputLayer,
-    //     hidden: [hiddenLayer],
-    //     output: outputLayer
-    // });
-    //
-    // console.log("Also got here");
-    //
-    // // // train the network
-    // // var learningRate = .2;
-    // // for (var i = 0; i < 20000; i++){
-    // //     for(var j = 0; j < trainData.length; j++) {
-    // //         myNetwork.activate([trainData[j].sd_front, trainData[j].sd_left]);
-    // //         myNetwork.propagate(learningRate, oneHotEncode(trainData[j]._class));
-    // //     }
-    // // }
-    // //
-    // // //test the network
-    //
-    // var trainer = new Trainer(myNetwork);
-    // trainer.train(trainData, {rate: .2});
-    //
-    // announce.broadcast({nodeID: stream[0].log.nodeID + "", message: "done"});
-    // console.log("Done training!");
-    //
-    // console.log(myNetwork.neurons());
+function startBroadcast(array){
+    console.log("In start broadcast");
+    array.forEach(function(obj, index){
+        console.log(obj.id);
+        announcer.broadcast(oneHotDecode(myNetwork.activate(obj.input)) + "," + obj.output + "," + obj.nodeID + "," + obj.id);
+    });
+    console.log("Done broadcasting!!!");
+    //sendOneBroadcast(array, 0);
+}
+
+function sendOneBroadcast(array, index){
+    if( index >= array.length ){
+        console.log("Done broadcasting!!!");
+        return;
+    }
+
+    setTimeout(function(){
+        var obj = array[index];
+        console.log(obj.id);
+        announcer.broadcast(oneHotDecode(myNetwork.activate(obj.input)) + "," + obj.output + "," + obj.nodeID + "," + obj.id);
+
+        index++;
+        sendOneBroadcast(array, index);
+    }, index == 0 ? 0 : 100);
+}
+
+
+function sensorDataFunc(inputFlow){
+    return inputFlow.discretize(Flow.from(sensePack.toIterator()).where(stream => !stream.isLocalStream).collect(), (data) => {var parts = data[0].data.split(','); return parts[parts.length - 1] - 0 === splitIndex; });
 }
 
 function processArrayData(dataArray){
@@ -120,8 +123,8 @@ function processArrayData(dataArray){
     dataArray.splice(dataArray.length - 1);
 
     console.log("First element is", dataArray[0]);
-    var randomizedDataArray = randomizeData(dataArray);
-    var trainData = selectTrainData(randomizedDataArray);
+    //var randomizedDataArray = randomizeData(dataArray);
+    var trainData = selectTrainData(dataArray);
     //var testData = selectTestData(randomizedDataArray);
 
     // create the network
@@ -134,7 +137,7 @@ function processArrayData(dataArray){
 
     //console.log("Got here");
 
-    var myNetwork = new Network({
+    myNetwork = new Network({
         input: inputLayer,
         hidden: [hiddenLayer],
         output: outputLayer
@@ -154,11 +157,18 @@ function processArrayData(dataArray){
     // //test the network
 
     var trainer = new Trainer(myNetwork);
-    trainer.train(trainData, {rate: .2});
+    // trainer.trainAsync(trainData,
+    //     {rate: .1, iterations: 20000/*, error: .005, shuffle: false, cost: Trainer.cost.CROSS_ENTROPY*/}
+    // ).then(results => {
+    //     console.log("Done training!\n", results);
+    //     done = true;
+    // });
 
-    console.log("Done training!");
+    var results = trainer.train(trainData, {rate: .2, iterations: 20000});
+    console.log("Done training!\n", results);
+    done = true;
 
-    announcer.broadcast(dataArray[0].split(",")[3]);//({nodeID: dataArray[0].split(",")[3] + "", message: "done"});
+    //announcer.broadcast(dataArray[0].split(",")[3]);//({nodeID: dataArray[0].split(",")[3] + "", message: "done"});
     //console.log(myNetwork.neurons());
 }
 
@@ -175,28 +185,43 @@ var initialLoad = setInterval(function(){
         }
     }
     else {
-        console.log("Waiting for devices to become available...");
+        console.log("Waiting for devices to become available...", sensePack.size());
     }
 }, 1000);
 
 function oneHotEncode(direction){
     switch(direction){
-        case "Move-Forward": return [1, 0, 0, 0, 0];
-        case "Sharp-Right-Turn": return [0, 1, 0, 0, 0];
-        case "Slight-Right-Turn": return [0, 0, 1, 0, 0];
-        case "Sharp-Left-Turn": return [0, 0, 0, 1, 0];
-        case "Slight-Left-Turn": return [0, 0, 0, 0, 1];
+        case "Move-Forward":
+        case "Move-Forward\n": return [1, 0, 0, 0, 0];
+
+        case "Sharp-Right-Turn":
+        case "Sharp-Right-Turn\n": return [0, 1, 0, 0, 0];
+
+        case "Slight-Right-Turn":
+        case "Slight-Right-Turn\n": return [0, 0, 1, 0, 0];
+
+        case "Sharp-Left-Turn":
+        case "Sharp-Left-Turn\n": return [0, 0, 0, 1, 0];
+
+        case "Slight-Left-Turn":
+        case "Slight-Left-Turn\n": return [0, 0, 0, 0, 1];
     }
+    console.log("\nERROR!!! Drone Direction not found!\n");
     return [0,0,0,0,0];
 }
 
 function oneHotDecode(array){
-    var index = 0;
+    array = Flow.from(array).select(elem => Math.round(elem)).collect();
+    var index = -1;
     for( var i = 0; i < array.length; i++ ){
         if( parseInt(array[i]) === 1 ){
             index = i;
             break;
         }
+    }
+    if( index === -1 ){
+        console.log("Decode ERROR!!!");
+        return "Error";
     }
     return directions[i];
 }
@@ -212,13 +237,12 @@ function randomizeData(array){
     return newArray;
 }
 
-function selectTrainData(array){//75 percents of the data
-    console.log(Math.ceil(75 * array.length / 100), array.length);
-    return Flow.from(array).limit(Math.ceil(75 * array.length / 100)).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: oneHotEncode(parts[2])};}).collect();
+function selectTrainData(array){
+    return Flow.from(array).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: oneHotEncode(parts[2])};}).collect();
 }
 
-function selectTestData(array){//25 percent of the data
-    return Flow.from(array).skip(Math.ceil(75 * array.length / 100)).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: oneHotEncode(parts[2])};}).collect();
+function selectTestData(array){
+    return Flow.from(array).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: parts[2].replace("\n", ""), id: parts[parts.length - 1] - 0, nodeID: parts[parts.length - 2]};}).collect();
 }
 
 function logData(){//for local testing

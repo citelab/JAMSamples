@@ -38,14 +38,7 @@ void sendSensorData(){
         return;
     }
 
-    //sensorData = {.sd_front:0.0, .sd_left:0.0, ._class:"_", .nodeID:nodeID, .id:-1};
-    while(1){
-        char pack[100];
-        snprintf(pack,sizeof(pack),"%s,%s,%d","0.0,0.0,_", nodeID, -1);
-        sensePack = pack;
-        break;
-    }
-    //sleep(3);
+    //The first time index keeps track of the time just before sending (tv1) and the time from after sending (tv2)
 
     struct timeval  tv1;
     gettimeofday(&tv1, NULL);
@@ -57,6 +50,8 @@ void sendSensorData(){
     int id = 0;
     while ((read = getline(&line, &len, fp)) != -1) {
         id++;
+        if (strcmp(line, "") == 0 || strcmp(line, "\n") == 0)
+            break;
         //split line to the different parts
 //        char* p = strtok(line, ",");
 //        float sd_front = atof(p);
@@ -83,14 +78,8 @@ void sendSensorData(){
         usleep(sendWait);
     }
     //add control value to signal end of sensor transfer
-    gettimeofday(&tv1, NULL);
-    trackers[1].text = "";
-    trackers[1].tv1 = tv1;
-    //log line to the device J
-    //sensorData = {.sd_front:0.0, .sd_left:0.0, ._class:"", .nodeID:nodeID, .id:-1};
-    char pack[100];
-    snprintf(pack,sizeof(pack),"%s,%s,%d","0.0,0.0,", nodeID, -1);
-    sensePack = pack;
+    gettimeofday(&tv2, NULL);
+    trackers[0].tv2 = tv2;
 
     printf("Done sending sensor data (%d)...\n", id);
 
@@ -117,33 +106,72 @@ int main(int argc, char** argv){
 
     sendSensorData();
 
+    int status = 0; //to know if we have seen the first broadcast
+
     //wait for broadcast
     //struct announcer announcement;
     while(1){
         printf("Waiting for broadcast...\n");
         char* announcement = announcer;
         printf("Received broadcast!!\n");
-        if( strcmp(announcement, nodeID) == 0 ){//strcmp(announcement.nodeID, nodeID) == 0
-            struct timeval  tv2;
-            gettimeofday(&tv2, NULL);
-            trackers[0].tv2 = tv2;
-            trackers[1].tv2 = tv2;
 
-             //printf("Received %s\n", mess);
-             FILE *f = fopen(fileName, "a");
-             if (f == NULL){
-                 printf("Error opening file!\n");
-                 return 1;
-             }
+        //break the string apart
+        char* p = strtok(announcement, ",");
+        char* predicted = p;
+        p = strtok (NULL, ",");
+        char* actual = p;
+        p = strtok (NULL, ",");
+        char* tempNodeID = p;
+        p = strtok (NULL, ",");
+        char* tempID = p;
 
-             fprintf(f, "Time before sending sensor results: %f seconds; Time after sending sensor results: %f seconds\n",
-                              (double) (trackers[0].tv2.tv_usec - trackers[0].tv1.tv_usec) / 1000000 +
-                              (double) (trackers[0].tv2.tv_sec - trackers[0].tv1.tv_sec),
-                              (double) (trackers[1].tv2.tv_usec - trackers[1].tv1.tv_usec) / 1000000 +
-                              (double) (trackers[1].tv2.tv_sec - trackers[1].tv1.tv_sec));
+        if( strcmp(tempNodeID, nodeID) == 0 ){//strcmp(announcement.nodeID, nodeID) == 0
+            printf("Received %s\n", announcement);
 
-             fclose(f);
-             break;
+            if( status == 0 ){
+                status = 1;
+                //The second index for trackers keeps the time from when we started receiving the broadcast ML query/test data (tv1) and when we received the last test data (tv2)
+                struct timeval  tv1;
+                gettimeofday(&tv1, NULL);
+                trackers[1].tv1 = tv1;
+
+                FILE *f = fopen(fileName, "a");
+                 if (f == NULL){
+                     printf("Error opening file!\n");
+                     return 1;
+                 }
+
+                 fprintf(f, "(First broadcast) From time before sending sensor results: %f seconds; From time after sending sensor results: %f seconds\n",
+                                  (double) (trackers[1].tv1.tv_usec - trackers[0].tv1.tv_usec) / 1000000 +
+                                  (double) (trackers[1].tv1.tv_sec - trackers[0].tv1.tv_sec),
+                                  (double) (trackers[1].tv1.tv_usec - trackers[0].tv2.tv_usec) / 1000000 +
+                                  (double) (trackers[1].tv1.tv_sec - trackers[0].tv2.tv_sec));
+
+                 fclose(f);
+            }
+
+            //check if we have gotten to the last item
+            if( strcmp(tempID, "5456") == 0 ){
+                struct timeval  tv2;
+                gettimeofday(&tv2, NULL);
+                trackers[1].tv2 = tv2;
+
+                FILE *f = fopen(fileName, "a");
+                 if (f == NULL){
+                     printf("Error opening file!\n");
+                     return 1;
+                 }
+
+                 fprintf(f, "(Last broadcast) From time before sending sensor results: %f seconds; From time after sending sensor results: %f seconds\n",
+                                  (double) (trackers[1].tv2.tv_usec - trackers[0].tv1.tv_usec) / 1000000 +
+                                  (double) (trackers[1].tv2.tv_sec - trackers[0].tv1.tv_sec),
+                                  (double) (trackers[1].tv2.tv_usec - trackers[0].tv2.tv_usec) / 1000000 +
+                                  (double) (trackers[1].tv2.tv_sec - trackers[0].tv2.tv_sec));
+
+                 fclose(f);
+
+                break;
+            }
         }
         //usleep(receiveWait);
     }
