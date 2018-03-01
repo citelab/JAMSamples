@@ -35,7 +35,7 @@ jview {
             type: button;
             title: 'butty';
             options: 'blah';
-            sink: bTn;
+            sink: bTon;
         }
     }
 }
