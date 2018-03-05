@@ -91,7 +91,7 @@ void waitBroadcast(){
 
 //Read entries from the sensor file and send it through to the fog
 void process(){
-    printf("In send function\n");
+    printf("In process function\n");
 
     time_t t;
     srand((unsigned) time(&t));
