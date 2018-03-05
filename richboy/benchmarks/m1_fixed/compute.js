@@ -1,7 +1,9 @@
 jdata{
     char* sensePack as logger(fog);
-
+    char* timing as logger(fog);
     char* announcer as broadcaster;
+
+    timingFlow as flow with timingFlowFunc of timing;
 }
 
 jcond{
@@ -9,7 +11,7 @@ jcond{
     isDevice: sys.type == "device";
 }
 
-
+var fs = require('fs');
 var synaptic = require('synaptic');
 var Neuron = synaptic.Neuron,
     Layer = synaptic.Layer,
@@ -66,6 +68,14 @@ if( JAMManager.isFog ) {
         else
             droneData[key].push(entry.log);
     });
+
+    var ws = fs.createWriteStream("timings.txt", {flags:'a'});
+    ws.write("Payload: " + PROCESS_COUNT + "\n");
+    //ws.end();
+    timingFlow.setTerminalFunction(input => {
+        ws.write(input + "\n");
+    });
+    timingFlow.startPush();
 }
 
 

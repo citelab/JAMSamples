@@ -46,6 +46,10 @@ void sendSensorData(){
     trackers[0].text = "";
     trackers[0].tv1 = tv1;
 
+    char timepack[100];
+    snprintf(timepack,sizeof(timepack),"%lu,%lu,[Node: %s],start", tv1.tv_sec, tv1.tv_usec, nodeID);
+    timing = timepack;
+
     printf("Before sending data...\n");
 
     int id = 0;
@@ -191,6 +195,10 @@ int main(int argc, char** argv){
                                   (double) (trackers[1].tv2.tv_sec - trackers[0].tv2.tv_sec));
 
                  fclose(f);
+
+                 char timepack[100];
+                  snprintf(timepack,sizeof(timepack),"%lu,%lu,[Node: %s],end", tv2.tv_sec, tv2.tv_usec, nodeID);
+                  timing = timepack;
 
                 break;
             }

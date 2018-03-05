@@ -1,7 +1,9 @@
 jdata{
     char* sensePack as logger(fog);
-
+    char* timing as logger(fog);
     char* announcer as broadcaster;
+
+    timingFlow as flow with timingFlowFunc of timing;
 }
 
 jcond{
@@ -9,7 +11,7 @@ jcond{
     isDevice: sys.type == "device";
 }
 
-
+var fs = require('fs');
 var synaptic = require('synaptic');
 var Neuron = synaptic.Neuron,
     Layer = synaptic.Layer,
@@ -31,16 +33,60 @@ var myNetwork = new Network({
 });
 
 var directions = ['Move-Forward', 'Sharp-Right-Turn', 'Slight-Right-Turn', 'Sharp-Left-Turn', 'Slight-Left-Turn'];
-var deviceId = 0;
-var PROCESS_COUNT = 350;    //the number of items each device will process.
+var deviceId = 0, jobId = 0;
+var PROCESS_COUNT = 50;    //the number of items each device will process.
 var trainCount = 0.8 * PROCESS_COUNT;
 var droneData = {}; //stores all the received data from the devices in a datastream key/array pair format
+var nodeJobs = []; //structure=> array of {jobID, nodeID, nodes, startIndex, endIndex, totalProcessed, lastUpdated, finished}
+var MAX_RUNNING_JOBS = 3;
+var TOTAL_ITEMS = 5456;
+var TIMEOUT = 5000;
 
 // jsync function to assign id's to devices
-jsync {isDevice} function getId() {
+jsync {isFog} function getId() {
     var id = ++deviceId;
     return id + "";
 }
+
+jsync {isFog} function getJob(nodeID){
+    var id = ++jobId;
+
+    //check if there is any unfinished job that the last updated time is more than 5 seconds ago
+    var jobs = Flow.from(nodeJobs).where(job => !job.finished && new Date().getTime() - job.lastUpdated > TIMEOUT).collect();
+    if( jobs.length > 0 ) {
+        var job = jobs[0];
+        job.nodes.push(nodeID - 0);
+        job.nodeID = nodeID - 0;
+        return job.jobID + "," + (job.startIndex + job.totalProcessed) + "," + job.endIndex;
+    }
+    else if( jobs.length >= MAX_RUNNING_JOBS ){//check if there is a maximum number of active node already working. If there are, then send a no job available message
+        return "0,0,0";
+    }
+    else{//check if all jobs have been exhausted. If any available, create job else send a no job available message
+        if( nodeJobs.length > 0 && nodeJobs[nodeJobs.length - 1].endIndex >= TOTAL_ITEMS ) {
+            console.log("ALL JOBS ASSIGNED!!!");
+            console.log(Flow.from(nodeJobs).select("finished").allMatch(status => status) ? "ALL JOBS FINISHED" : "SOME JOBS PENDING");
+            return "0,0,0";
+        }
+        else{//create new job
+            var startIndex = nodeJobs.length > 0 ? nodeJobs[nodeJobs.length - 1].endIndex : 0;
+            var job = {
+                jobID: id,
+                nodeID: nodeID - 0,
+                nodes: [nodeID - 0],
+                startIndex: startIndex,
+                endIndex: Math.min(startIndex + PROCESS_COUNT, TOTAL_ITEMS),
+                totalProcessed: 0,
+                lastUpdated: new Date().getTime(),
+                finished: false,
+                data: []
+            };
+            nodeJobs.push(job);
+            return job.jobID + "," + job.startIndex + "," + job.endIndex;
+        }
+    }
+}
+
 
 if( JAMManager.isDevice ) {
     console.log("device has started...");
@@ -55,20 +101,28 @@ if( JAMManager.isFog ) {
     sensePack.subscribe((key, entry, stream) => {
         console.log("received", JSON.stringify(entry.log));
 
-        if( !droneData[key] )
-            droneData[key] = [];
+        var parts = entry.log.split(",");
+        var job = Flow.from(nodeJobs).where(job => job.jobID == parts[parts.length - 3]).findFirst();
+        job.data.push(entry.log);
 
-        if( entry.log == "done" ) {
-            //start training the data for this device
-            processArrayData(droneData[key], stream);
-            return;
+        if( job.data.length == PROCESS_COUNT ){
+            job.finished = true;
+            processArrayData(job.data, stream);
         }
-        else
-            droneData[key].push(entry.log);
     });
+
+    var ws = fs.createWriteStream("timings.txt", {flags:'a'});
+    ws.write("Payload: " + PROCESS_COUNT + "\n");
+    //ws.end();
+    timingFlow.setTerminalFunction(input => {
+        ws.write(input + "\n");
+    });
+    timingFlow.startPush();
 }
 
-
+function timingFlowFunc(inputFlow){
+    return inputFlow.select("data");
+}
 
 function processArrayData(dataArray, stream){
     console.log("First element is", dataArray[0]);
