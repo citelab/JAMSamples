@@ -49,7 +49,10 @@ void sendLog(){
             break;
 
         char pack[100];
-        snprintf(pack,sizeof(pack),"%s,%s,%d", line, nodeID, id);
+        if( id == PROCESS_COUNT )   //if this is the last item
+            snprintf(pack,sizeof(pack),"%s,%s,%s,%d", line, "last", nodeID, id);
+        else
+            snprintf(pack,sizeof(pack),"%s,%s,%d", line, nodeID, id);
 
         //log line to the device J
         sensePack = pack;
@@ -114,8 +117,8 @@ int main(int argc, char** argv){
     nodeID = getId();
     PROCESS_COUNT = getPayload();
 
-    sendWait = 500;
-    receiveWait = 500;
+    sendWait = 1000;
+    receiveWait = 1000;
 
     printf("%s %d %d\n", nodeID, sendWait, receiveWait);
 
