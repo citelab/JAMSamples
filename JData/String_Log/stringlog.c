@@ -9,7 +9,7 @@ int main()
     sprintf(buf, "%d-%s", i, names[i % 10]);
     name = buf; 
     printf("Wrote .. name: %s\n", buf);
-    sleep(5);
+    sleep(1);
   }
 
 }

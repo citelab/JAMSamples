@@ -27,4 +27,4 @@ setInterval(function() {
 	}
 
 	count = count + 1;
-    }, 5000);
+    }, 1000);

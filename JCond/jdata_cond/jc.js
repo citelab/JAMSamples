@@ -27,6 +27,6 @@ setInterval(()=> {
 
 
 function notequal() {
-
-	return;
+    console.log("Not equal called..");
+    return;
 }

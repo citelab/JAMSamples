@@ -19,7 +19,7 @@ for (i = 0; i < 1000; i++) {
 sprintf(buf, "%d-%s", i, names[i % 10]);
 jamdata_log_to_server("global", "name", buf, 0);
 printf("Wrote .. name: %s\n", buf);
-sleep(5);
+sleep(1);
 }
 }
 
