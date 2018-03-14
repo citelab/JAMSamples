@@ -1,0 +1,11 @@
+djam init --zones=8 --indelay=3:1 --outdelay=5:3 --cldelay=30:5
+
+djam run stringlog.jxe --cloud --app=q55 --bg
+
+for i in `seq 1 14`; do 
+    djam run stringlog.jxe --fog --app=q55 --bg
+done
+
+for i in `seq 1 100`; do
+    djam run stringlog.jxe --app=q55  --bg
+done
