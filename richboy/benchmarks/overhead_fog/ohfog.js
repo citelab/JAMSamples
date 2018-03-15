@@ -12,6 +12,7 @@ jcond{
 }
 
 var fs = require('fs');
+var path = require('path');
 
 var deviceId = 0;
 var PROCESS_COUNT = 1;
@@ -54,6 +55,7 @@ if( JAMManager.isFog ) {
     });
 
     var ws = fs.createWriteStream("timings_"+ JAMManager.getLevelCode() +".txt", {flags:'a'});
+    console.log("Path to file is: ", path.resolve("timings_"+ JAMManager.getLevelCode() +".txt"));
     ws.write("Payload: " + PROCESS_COUNT + "\n");
         //ws.end();
     timingFlow.setTerminalFunction(input => {
@@ -73,5 +75,10 @@ var initialLoad = setInterval(function(){
     }
     else {
         console.log("Waiting for devices to become available...", sensePack.size());
+        //console.log("Path to file is: ", path.resolve("timings_"+ JAMManager.getLevelCode() +".txt"));
     }
+}, 1000);
+
+setInterval(function(){
+    console.log("Tags Data: ", jamsys.tags ? jamsys.tags : "undefined");
 }, 1000);
