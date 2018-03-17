@@ -19,6 +19,7 @@ var PROCESS_COUNT = 1;
 
 // jsync function to assign id's to devices
 jsync {isFog} function getId() {
+    console.log("Giving the ID.......................... ");
     var id = ++deviceId;
     return id + "";
 }
@@ -80,5 +81,5 @@ var initialLoad = setInterval(function(){
 }, 1000);
 
 setInterval(function(){
-    console.log("Tags Data: ", jamsys.tags ? jamsys.tags : "undefined");
+    console.log("Tags Data: ", jsys.tags ? jsys.tags : "undefined");
 }, 1000);

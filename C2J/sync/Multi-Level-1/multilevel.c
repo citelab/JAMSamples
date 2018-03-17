@@ -1,10 +1,23 @@
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/time.h>
 
-int getId();
-int getIdDev();
+char* getId();
+int getPayload();
 
-int main(int argc, char *argv[]) {
-  
-  int id = getId();
-  printf("My id = %d\n", id);
+
+char* nodeID;
+int PROCESS_COUNT;  //number of data item points to process;
+
+
+
+int main(int argc, char** argv){
+    printf("C is running...\n");
+
+    nodeID = getId();
+    PROCESS_COUNT = getPayload();
+
+    printf("My ID is %s\n", nodeID);
 
 }

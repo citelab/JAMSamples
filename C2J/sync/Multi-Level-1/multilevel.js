@@ -1,19 +1,17 @@
-jcond {
-    fogonly: sys.type == "fog";
+jcond{
+    isFog: sys.type == "fog";
+    isDevice: sys.type == "device";
 }
 
+var deviceId = 0;
+var PROCESS_COUNT = 1;
 
-var count=10;
-
-
-jsync function getIdDev() {
-    count = count + 1;
-    return count;
+// jsync function to assign id's to devices
+jsync {isFog} function getId() {
+    var id = ++deviceId;
+    return id + "";
 }
 
-
-jsync {fogonly} function getId() {
-    count = count + 1;
-    return count;
+jsync {isDevice} function getPayload() {
+    return PROCESS_COUNT;
 }
-
