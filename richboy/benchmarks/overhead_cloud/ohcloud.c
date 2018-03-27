@@ -112,7 +112,6 @@ void receiveBroadcast(){
 }
 
 int main(int argc, char** argv){
-  sleep(1);
     printf("C is running...\n");
 
     nodeID = getId();

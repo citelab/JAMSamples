@@ -6,6 +6,5 @@ jasync function printmsg(msg) {
 }
 
 setInterval(function() {
-    printmsg(chance.name());
-}, 1000);
-
+    printmsg(chance.name() + " -- " +  jsys.type);
+}, 5000);
