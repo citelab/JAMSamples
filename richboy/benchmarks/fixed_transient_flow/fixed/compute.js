@@ -32,61 +32,18 @@ var myNetwork = new Network({
     output: outputLayer
 });
 
+var comm = new RealtimeFlow("transient", "comm", null, requestFunc);
+
 var directions = ['Move-Forward', 'Sharp-Right-Turn', 'Slight-Right-Turn', 'Sharp-Left-Turn', 'Slight-Left-Turn'];
-var deviceId = 0, jobId = 0;
-var PROCESS_COUNT = 50;    //the number of items each device will process.
-var trainCount = 0.8 * PROCESS_COUNT;
+var deviceId = 0;
+var PROCESS_COUNT = 350;    //the number of items each device will process.
 var droneData = {}; //stores all the received data from the devices in a datastream key/array pair format
-var nodeJobs = []; //structure=> array of {jobID, nodeID, nodes, startIndex, endIndex, totalProcessed, lastUpdated, finished}
-var MAX_RUNNING_JOBS = 3;
-var TOTAL_ITEMS = 5456;
-var TIMEOUT = 5000;
 
 // jsync function to assign id's to devices
-jsync {isFog} function getId() {
+jsync {isDevice} function getId() {
     var id = ++deviceId;
     return id + "";
 }
-
-jsync {isFog} function getJob(nodeID){
-    var id = ++jobId;
-
-    //check if there is any unfinished job that the last updated time is more than 5 seconds ago
-    var jobs = Flow.from(nodeJobs).where(job => !job.finished && new Date().getTime() - job.lastUpdated > TIMEOUT).collect();
-    if( jobs.length > 0 ) {
-        var job = jobs[0];
-        job.nodes.push(nodeID - 0);
-        job.nodeID = nodeID - 0;
-        return job.jobID + "," + (job.startIndex + job.totalProcessed) + "," + job.endIndex;
-    }
-    else if( jobs.length >= MAX_RUNNING_JOBS ){//check if there is a maximum number of active node already working. If there are, then send a no job available message
-        return "0,0,0";
-    }
-    else{//check if all jobs have been exhausted. If any available, create job else send a no job available message
-        if( nodeJobs.length > 0 && nodeJobs[nodeJobs.length - 1].endIndex >= TOTAL_ITEMS ) {
-            console.log("ALL JOBS ASSIGNED!!!");
-            console.log(Flow.from(nodeJobs).select("finished").allMatch(status => status) ? "ALL JOBS FINISHED" : "SOME JOBS PENDING");
-            return "0,0,0";
-        }
-        else{//create new job
-            var startIndex = nodeJobs.length > 0 ? nodeJobs[nodeJobs.length - 1].endIndex : 0;
-            var job = {
-                jobID: id,
-                nodeID: nodeID - 0,
-                nodes: [nodeID - 0],
-                startIndex: startIndex,
-                endIndex: Math.min(startIndex + PROCESS_COUNT, TOTAL_ITEMS),
-                totalProcessed: 0,
-                lastUpdated: new Date().getTime(),
-                finished: false,
-                data: []
-            };
-            nodeJobs.push(job);
-            return job.jobID + "," + job.startIndex + "," + job.endIndex;
-        }
-    }
-}
-
 
 if( JAMManager.isDevice ) {
     console.log("device has started...");
@@ -97,19 +54,20 @@ else
 
 //announcer.addHook((data) => {console.log(data);});
 
-if( JAMManager.isFog ) {
+if( JAMManager.isDevice ) {
     sensePack.subscribe((key, entry, stream) => {
         console.log("received", JSON.stringify(entry.log));
 
-        var parts = entry.log.split(",");
-        var job = Flow.from(nodeJobs).where(job => job.jobID == parts[parts.length - 3]).findFirst();
-        job.data.push(entry.log);
-        job.lastUpdated = new Date().getTime();
+        if( !droneData[key] )
+            droneData[key] = [];
 
-        if( job.data.length == PROCESS_COUNT ){
-            job.finished = true;
-            processArrayData(job.data, stream);
+        if( entry.log == "done" ) {
+            //start training the data for this device
+            processArrayData(droneData[key], stream);
+            return;
         }
+        else
+            droneData[key].push(entry.log);
     });
 
     var ws = fs.createWriteStream("timings.txt", {flags:'a'});
@@ -129,31 +87,11 @@ function processArrayData(dataArray, stream){
     console.log("First element is", dataArray[0]);
     var randomizedDataArray = randomizeData(dataArray);
     var trainData = selectTrainData(randomizedDataArray);
-    var testData = selectTestData(randomizedDataArray);
-
-
-    // // train the network
-    // var learningRate = .2;
-    // for (var i = 0; i < 20000; i++){
-    //     for(var j = 0; j < trainData.length; j++) {
-    //         myNetwork.activate([trainData[j].sd_front, trainData[j].sd_left]);
-    //         myNetwork.propagate(learningRate, oneHotEncode(trainData[j]._class));
-    //     }
-    // }
-    //
-    // //test the network
 
     var trainer = new Trainer(myNetwork);
-    // trainer.trainAsync(trainData,
-    //     {rate: .1, iterations: 20000/*, error: .005, shuffle: false, cost: Trainer.cost.CROSS_ENTROPY*/}
-    // ).then(results => {
-    //     console.log("Done training!\n", results);
-    //     done = true;
-    // });
 
     var results = trainer.train(trainData, {rate: .2, iterations: 20000, shuffle: false});
     console.log("Done training!\n", results);
-    startBroadcast(testData, stream);
 }
 
 function startBroadcast(array, stream){
@@ -226,9 +164,12 @@ function randomizeData(array){
 }
 
 function selectTrainData(array){
-    return Flow.from(array).limit(Math.ceil(0.8 * array.length)).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: oneHotEncode(parts[2])};}).collect();
+    return Flow.from(array).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: oneHotEncode(parts[2])};}).collect();
 }
 
-function selectTestData(array){
-    return Flow.from(array).skip(Math.ceil(0.8 * array.length)).select(elem => {var parts = elem.split(','); return {input: [parts[0]-0, parts[1]-0], output: oneHotEncode(parts[2]), expected: parts[2].replace("\n", ""), id: parts[parts.length - 1] - 0, nodeID: parts[parts.length - 2]};}).collect();
+function requestFunc(obj){
+    console.log("Received request from Transient: ", JSON.stringify(obj));
+    var raw = myNetwork.activate(obj.input);
+    var resp = oneHotDecode(raw);
+    comm.send(Object.assign({}, obj, {resp: resp, raw: raw}));
 }

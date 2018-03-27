@@ -78,7 +78,9 @@ if( JAMManager.isFog ) {
     timingFlow.startPush();
 }
 
-
+function timingFlowFunc(inputFlow){
+    return inputFlow.select("data");
+}
 
 function processArrayData(dataArray, stream){
     console.log("First element is", dataArray[0]);
