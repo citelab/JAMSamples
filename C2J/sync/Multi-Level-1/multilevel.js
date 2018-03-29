@@ -3,7 +3,7 @@ jcond{
     isDevice: sys.type == "device";
 }
 
-var deviceId = 0;
+var deviceId = 1000;
 var PROCESS_COUNT = 1;
 
 // jsync function to assign id's to devices
