@@ -13,14 +13,13 @@ char dev_tag[32] = { 0 };
 int ndevices;
 jambroadcaster_t *y;
 jambroadcaster_t *z;
-void pong() {
+void pong(int q) {
 jact = jam_create_activity(js);
-jact = jam_rexec_async(js, jact, "jcond.get('numcheck').source", 16, "pong", "");
+jact = jam_rexec_async(js, jact, "jcond.get('numcheck').source && jcond.get('devonly').source", 17, "pong", "i",q);
 activity_free(jact);
 }
 
 int ping() {
-pong();
 return 0;
 }
 int user_main(int argc, char **argv) {

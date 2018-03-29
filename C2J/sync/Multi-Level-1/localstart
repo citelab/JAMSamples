@@ -1,13 +1,71 @@
-jamrun multilevel.jxe --fog --app=q2 --log --bg
-jamrun multilevel.jxe --fog --app=q2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
-jamrun multilevel.jxe --app=q2 --num=2 --log --bg
+# start some fogs
+jamrun multilevel.jxe --fog --app=q222 --log --bg
+jamrun multilevel.jxe --fog --app=q222 --log --bg
+jamrun multilevel.jxe --fog --app=q222 --log --bg
+jamrun multilevel.jxe --fog --app=q222 --log --bg
+jamrun multilevel.jxe --fog --app=q222 --log --bg
+#
+# start some device
+#
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg
+jamrun multilevel.jxe --app=q222  --log --bg

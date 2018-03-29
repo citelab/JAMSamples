@@ -1,8 +1,8 @@
 
-void pong();
+void pong(int q);
 
 int ping() {
-    pong();
+//    pong(1);
     return 0;
 }
 
