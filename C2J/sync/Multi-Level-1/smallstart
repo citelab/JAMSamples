@@ -1,0 +1,10 @@
+# start some fogs
+jamrun multilevel.jxe --fog --app=q22 --log --bg
+jamrun multilevel.jxe --fog --app=q22 --log --bg
+# start some device
+#
+jamrun multilevel.jxe --app=q22  --log --bg
+jamrun multilevel.jxe --app=q22  --log --bg
+jamrun multilevel.jxe --app=q22  --log --bg
+jamrun multilevel.jxe --app=q22  --log --bg
+jamrun multilevel.jxe --app=q22  --log --bg
