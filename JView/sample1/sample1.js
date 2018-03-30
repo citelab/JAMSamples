@@ -9,7 +9,7 @@ jview {
     page1 as page {
         disp1 is display {
             type: graph;
-            title: 'Temperature';
+            title: 'Temperature Display';
             source: temp;
             options: 'blah blah';
         }

@@ -104,7 +104,6 @@ if( JAMManager.isFog ) {
         var parts = entry.log.split(",");
         var job = Flow.from(nodeJobs).where(job => job.jobID == parts[parts.length - 3]).findFirst();
         job.data.push(entry.log);
-        job.lastUpdated = new Date().getTime();
 
         if( job.data.length == PROCESS_COUNT ){
             job.finished = true;
