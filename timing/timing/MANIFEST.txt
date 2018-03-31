@@ -1,4 +1,0 @@
-VERSION = 1.0
-DESCRIPTION = JAMScript executable file
-NAME = timing
-CREATE-TIME = 1522037362801
