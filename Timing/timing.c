@@ -25,23 +25,17 @@ jasync cAsyncReturn() {
 void asyncCallTimeSequencial() {
 	clock_gettime(clk_id, &tp);
 	seqAsync(tp.tv_sec, tp.tv_nsec);
-    printf("Done Sync Async....\n");
 }
 
-void gohere() {
-    printf("------------------->>>>    Hello......\n");
-    writeResults();
-}
 
 jasync asyncDone() {
 
 	iteration++;
-    printf("In async Done....iteration %d, numTests %d\n", iteration, numTests);
 	if(iteration < numTests) {
 		asyncCallTimeSequencial();
 	} else {
 		testFinished = 1;
-	       gohere();
+	       	writeResults();
 	}
 }
 

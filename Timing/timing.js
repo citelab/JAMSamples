@@ -24,7 +24,6 @@ var tests = {
 
 
 jasync function seqAsync(startSec, startNS) {
-	console.log("HEY");
 
 	var clockTime = clock.gettime(clock.MONOTONIC);
 	var secDelay = clockTime.sec - startSec;
@@ -36,7 +35,6 @@ jasync function seqAsync(startSec, startNS) {
 	}
 
 	tests.seqAsync.push(nsDelay);
-    console.log("-----------> asyncDone called...");
     asyncDone();
 }
 
