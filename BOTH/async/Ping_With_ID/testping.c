@@ -1,15 +1,16 @@
 
+int myid = -1;
+
 int getid();
 void pingj(int num);
 
 jasync doping() {
-  int myid = getid();
-  printf("My id %d\n", myid);
-
-  pingj(myid);
+  if (myid > 0)
+    pingj(myid);
 }  
 
 
 int main() {
   printf("Started...\n");
+  myid = getid();
 }

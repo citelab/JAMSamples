@@ -1,4 +1,0 @@
-VERSION = 1.0
-DESCRIPTION = JAMScript executable file
-NAME = jasync
-CREATE-TIME = 1520840476981

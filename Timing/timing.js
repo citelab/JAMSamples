@@ -34,8 +34,9 @@ jasync function seqAsync(startSec, startNS) {
 	if(secDelay > 0) {
 		nsDelay = 1000000000 - nsDelay;
 	}
-	
+
 	tests.seqAsync.push(nsDelay);
+    console.log("-----------> asyncDone called...");
     asyncDone();
 }
 
@@ -91,7 +92,7 @@ function jSyncRound() {
 	for (var i = 0; i < numTests; i++) {
 		var startTime = clock.gettime(clock.MONOTONIC);
 		cSyncReturn();
-	
+
 		var endTime = clock.gettime(clock.MONOTONIC);
 		var secDelay = endTime.sec - startTime.sec;
 		var nsDelay =  endTime.nsec - startTime.nsec;
@@ -106,9 +107,9 @@ function jSyncRound() {
 function jAsyncRound() {
 	for (var i = 0; i < numTests; i++) {
 		var startTime = clock.gettime(clock.MONOTONIC);
-		
+
 		cAsyncReturn();
-		
+
 		var endTime = clock.gettime(clock.MONOTONIC);
 		var secDelay = endTime.sec - startTime.sec;
 		var nsDelay =  endTime.nsec - startTime.nsec;

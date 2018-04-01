@@ -35,6 +35,7 @@ void execpong(){
 usleep(50000);
 printf("pong received... %d\n", counter++);
 ping(perank);
+printf("Sent the ping... \n");
 }
 void pong() {
 jam_lexec_async("execpong");

@@ -11,11 +11,13 @@ char jdata_buffer[20];
 char app_id[64] = { 0 };
 char dev_tag[32] = { 0 };
 int ndevices;
+int myid = -1;
 int getid() {
 jam_error = 0; 
 arg_t *res = jam_rexec_sync(js, "true", 0, "getid", "");
 if (res == NULL) { printf("Remote execution error: %s\n", "getid"); jam_error = 1;command_arg_free(res);
-return -1;} else {int ret = res->val.ival;
+return -1;
+} else {int ret = res->val.ival;
 command_arg_free(res);
 return ret;
 }
@@ -28,9 +30,7 @@ activity_free(jact);
 }
 
 void execdoping(){
-int myid = getid();
-printf("My id %d\n", myid);
-pingj(myid);
+if(myid > 0) pingj(myid);
 }
 void doping() {
 jam_lexec_async("execdoping");
@@ -42,6 +42,7 @@ execdoping();
 
 int user_main() {
 printf("Started...\n");
+myid = getid();
 }
 
 void user_setup() {

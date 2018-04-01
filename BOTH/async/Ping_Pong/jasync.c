@@ -23,6 +23,7 @@ jasync pong() {
     usleep(50000);
     printf("pong received... %d\n", counter++);
     ping(perank);
+    printf("Sent the ping... \n");
 }
 
 int main() {

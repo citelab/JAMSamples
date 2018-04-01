@@ -10,8 +10,8 @@ void seqAsync(int, int);
 void parAsync(int, int);
 int syncJS(int, int);
 void writeResults();
-int emptyJS(); 
-void startLoggerTest(); 
+int emptyJS();
+void startLoggerTest();
 
 
 jsync int cSyncReturn() {
@@ -25,14 +25,23 @@ jasync cAsyncReturn() {
 void asyncCallTimeSequencial() {
 	clock_gettime(clk_id, &tp);
 	seqAsync(tp.tv_sec, tp.tv_nsec);
+    printf("Done Sync Async....\n");
+}
+
+void gohere() {
+    printf("------------------->>>>    Hello......\n");
+    writeResults();
 }
 
 jasync asyncDone() {
+
 	iteration++;
+    printf("In async Done....iteration %d, numTests %d\n", iteration, numTests);
 	if(iteration < numTests) {
 		asyncCallTimeSequencial();
 	} else {
 		testFinished = 1;
+	       gohere();
 	}
 }
 
@@ -63,7 +72,7 @@ void syncRoundTrip() {
 	FILE *f = fopen("syncRound.txt", "w");
 	for (int i = 0; i < numTests; i++) {
 		clock_gettime(clk_id, &start);
-	
+
 		emptyJS();
 
 		clock_gettime(clk_id, &stop);
@@ -126,7 +135,7 @@ void main() {
 	asyncCallTimeSequencial();
 
 
-	while(testFinished == 0);
+//	while(testFinished == 0);
 	// iteration = 0;
 	// printf("Running sequential async js calls");
 	// asyncCallTimeParallel();
@@ -140,8 +149,6 @@ void main() {
 	// syncRoundTrip();
 	// loggerTime();
 
-	writeResults();
+//	writeResults();
 	// broadcastStarter();
 }
-
-  
