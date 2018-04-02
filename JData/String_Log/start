@@ -7,5 +7,5 @@ for i in `seq 1 3`; do
 done
 
 for i in `seq 1 12`; do
-    djam run stringlog.jxe --app=q5  --bg
+    djam run stringlog.jxe --app=q5 --num=3  --bg
 done
