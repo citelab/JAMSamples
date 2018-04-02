@@ -115,6 +115,8 @@ int main(int argc, char** argv){
     printf("C is running...\n");
 
     nodeID = getId();
+    printf("My ID %s \n", nodeID);
+
     PROCESS_COUNT = getPayload();
 
     sendWait = 1000;
