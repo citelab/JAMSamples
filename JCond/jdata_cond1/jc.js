@@ -4,12 +4,15 @@ jdata {
     int z as broadcaster;
 }
 
+
 jcond {
     numcheck: z < 10, notequal;
     devonly: sys.type == "device";
 }
 
 jasync {numcheck && devonly} function pong(q) {
+
+           console.log("Last value ", z.getLastValue());
 
     console.log("================ Pong!--- ", q);
 }
@@ -18,14 +21,19 @@ var count = 0;
 var indx = 0;
 
 setInterval(()=> {
-   y.broadcast(count);
-   z.broadcast(indx);
+
    if (jsys.type === "fog") {
-       console.log("xx Calling pong...count = ", count++, " indx = ", indx++);
-       pong(count);
+       y.broadcast(count);
+       z.broadcast(indx);
+
+       console.log("xx Calling pong...count = ", count, " indx = ", indx);
+       pong(count + "-ff");
+
+       count++;
+       indx++;
    }
 
-}, 10000);
+}, 1000);
 
 
 function notequal(q) {

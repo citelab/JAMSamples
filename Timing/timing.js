@@ -3,6 +3,10 @@ var clock = require('posix-clock');
 var NanoTimer = require('nanotimer');
 var nanoTimerObject = new NanoTimer();
 
+jcond {
+	fogonly: 1 < 2;
+}
+
 jdata {
     char* logTime as logger;
     char* broadcastTime as broadcaster;
@@ -15,6 +19,7 @@ var tests = {
 	seqAsync: new Array(),
 	parAsync: new Array(),
 	sync: new Array(),
+	syncCond: new Array(),
 	logger: new Array(),
 	jSyncRound: new Array(),
 	jAsyncRound: new Array()
@@ -52,6 +57,7 @@ jasync function parAsync(startSec, startNS) {
 }
 
 jsync function syncJS(startSec, startNS) {
+	console.log("A");
 	var clockTime = clock.gettime(clock.MONOTONIC);
 	var secDelay = clockTime.sec - startSec;
 	var nsDelay =  clockTime.nsec - startNS;
@@ -61,6 +67,19 @@ jsync function syncJS(startSec, startNS) {
 	tests.sync.push(nsDelay);
 	return 0;
 }
+
+jsync {fogonly} function syncJSCond(startSec, startNS) {
+	console.log("HEYE");
+	var clockTime = clock.gettime(clock.MONOTONIC);
+	var secDelay = clockTime.sec - startSec;
+	var nsDelay =  clockTime.nsec - startNS;
+	if(secDelay > 0) {
+		nsDelay = 1000000000 - nsDelay;
+	}
+	tests.syncCond.push(nsDelay);
+	return 0;
+}
+
 
 jsync function emptyJS() {
 	return 0;
@@ -79,6 +98,7 @@ jsync function startLoggerTest() {
 	    	}
     		if(counter === numTests) {
     			nanoTimerObject.clearInterval();
+    			broadcastStarter();
     		}
 	    }
 	}, '', '1u');
@@ -119,16 +139,16 @@ function jAsyncRound() {
 	}
 }
 
-function broadcastTest() {
+jasync function broadcastTest() {
 	var counter = 0;
 	var interval = setInterval(function() {
 		var clockTime = clock.gettime(clock.MONOTONIC);
 	    var timeString = clockTime.sec + clockTime.nsec.toString().padStart(9, "0");
 		broadcastTime.broadcast(timeString);
 		counter++;
-		// if(counter === numTests) {
-		// 	clearInterval(interval);
-		// }
+		if(counter === numTests) {
+			clearInterval(interval);
+		}
 	}, 10);
 }
 // jasync function startLoggerTest() {
@@ -153,21 +173,24 @@ jasync function writeResults() {
 	fs.writeFile('seqAsync.txt', tests.seqAsync.join("\n"), (err) => {
 	  if (err) throw err;
 	});
-	// fs.writeFile('parAsync.txt', tests.parAsync.join("\n"), (err) => {
-	//   if (err) throw err;
-	// });
-	// fs.writeFile('sync.txt', tests.sync.join("\n"), (err) => {
-	//   if (err) throw err;
-	// });
-	// fs.writeFile('logger.txt', tests.logger.join("\n"), (err) => {
-	//   if (err) throw err;
-	// });
-	// fs.writeFile('jSyncRound.txt', tests.jSyncRound.join("\n"), (err) => {
-	//   if (err) throw err;
-	// });
-	// fs.writeFile('jAsyncRound.txt', tests.jAsyncRounds.join("\n"), (err) => {
-	//   if (err) throw err;
-	// });
+	fs.writeFile('parAsync.txt', tests.parAsync.join("\n"), (err) => {
+	  if (err) throw err;
+	});
+	fs.writeFile('sync.txt', tests.sync.join("\n"), (err) => {
+	  if (err) throw err;
+	});
+	fs.writeFile('syncCond.txt', tests.syncCond.join("\n"), (err) => {
+	  if (err) throw err;
+	});
+	fs.writeFile('logger.txt', tests.logger.join("\n"), (err) => {
+	  if (err) throw err;
+	});
+	fs.writeFile('jSyncRound.txt', tests.jSyncRound.join("\n"), (err) => {
+	  if (err) throw err;
+	});
+	fs.writeFile('jAsyncRound.txt', tests.jAsyncRound.join("\n"), (err) => {
+	  if (err) throw err;
+	});
 }
 
 // broadcastTest();

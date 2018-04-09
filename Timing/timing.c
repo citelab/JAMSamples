@@ -2,17 +2,22 @@
 int numTests = 1000;
 int iteration = 0;
 // int results[100];
-int testFinished = 1;
 struct timespec tp;
 clockid_t clk_id = CLOCK_MONOTONIC;
 
 void seqAsync(int, int);
 void parAsync(int, int);
 int syncJS(int, int);
+int syncJSCond(int, int);
 void writeResults();
 int emptyJS();
 void startLoggerTest();
-
+void syncRoundTrip();
+void syncCallTime();
+void loggerTime();
+void asyncCallTimeParallel();
+void broadcastTest();
+void syncCondCallTime();
 
 jsync int cSyncReturn() {
 	return 0;
@@ -29,13 +34,11 @@ void asyncCallTimeSequencial() {
 
 
 jasync asyncDone() {
-
 	iteration++;
 	if(iteration < numTests) {
 		asyncCallTimeSequencial();
 	} else {
-		testFinished = 1;
-	       	writeResults();
+		asyncCallTimeParallel();
 	}
 }
 
@@ -48,7 +51,7 @@ void asyncCallTimeParallel() {
 }
 
 jasync asyncDone2() {
-	testFinished = 1;
+	syncCallTime();
 }
 
 
@@ -57,6 +60,15 @@ void syncCallTime() {
 		clock_gettime(clk_id, &tp);
 		syncJS(tp.tv_sec, tp.tv_nsec);
 	}
+	syncCondCallTime();
+}
+
+void syncCondCallTime() {
+	for (int i = 0; i < numTests; i++) {
+		clock_gettime(clk_id, &tp);
+		syncJSCond(tp.tv_sec, tp.tv_nsec);
+	}
+	syncRoundTrip();
 }
 
 void syncRoundTrip() {
@@ -78,6 +90,7 @@ void syncRoundTrip() {
 	    fprintf(f, "%i\n", delay);
 	}
 	fclose(f);
+	loggerTime();
 }
 
 void loggerTime() {
@@ -90,16 +103,18 @@ void loggerTime() {
 		clock_gettime(clk_id, &tp);
 		snprintf(buf, 50, "%lu%09lu", tp.tv_sec, tp.tv_nsec);
 		logTime = buf;
-		nanosleep(&sleepValue, NULL);
+		usleep(100);
 	}
+
 }
 
-void broadcastStarter() {
+jasync broadcastStarter() {
 	int count = 0;
 	char* lastVal;
 	char* curVal;
 	char buf[50];
 	char *ptr;
+	broadcastTest();
 
 	FILE *f = fopen("broadcast.txt", "w");
 	while(1) {
@@ -118,31 +133,12 @@ void broadcastStarter() {
 		}
 	}
 	fclose(f);
+
+	writeResults();
 }
 
 
 void main() {
 
-	iteration = 0;
-	printf("Running sequential async js calls");
-	testFinished = 0;
 	asyncCallTimeSequencial();
-
-
-//	while(testFinished == 0);
-	// iteration = 0;
-	// printf("Running sequential async js calls");
-	// asyncCallTimeParallel();
-
-
-	// while(testFinished == 0);
-	// printf("Running sync js calls");
-	// syncCallTime();
-
-
-	// syncRoundTrip();
-	// loggerTime();
-
-//	writeResults();
-	// broadcastStarter();
 }
