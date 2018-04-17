@@ -103,7 +103,7 @@ void loggerTime() {
 		clock_gettime(clk_id, &tp);
 		snprintf(buf, 50, "%lu%09lu", tp.tv_sec, tp.tv_nsec);
 		logTime = buf;
-		usleep(100);
+	//	usleep(100);
 	}
 
 }
