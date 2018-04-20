@@ -8,6 +8,12 @@ jdata{
     p as outflow of q;
 }
 
+
+if (jsys.oflow !== undefined)
+    p.setName(jsys.oflow);
+else
+    console.log("ERROR! Undefined oflow...");
+
 p.start();
 
 

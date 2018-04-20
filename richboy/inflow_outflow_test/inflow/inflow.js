@@ -4,8 +4,14 @@
 "use strict";
 
 jdata{
-    r as inflow of app://app1.p;
+    r as inflow;
 }
+
+
+if (jsys.iflow !== undefined)
+    r.openFlow(jsys.iflow);
+else
+    console.log("ERROR! Undefined iflow..");
 
 r.setTerminalFunction(receive); //we can chain r through other flow methods before setting the terminal function
 
