@@ -86,6 +86,9 @@ jsync function emptyJS() {
 }
 
 jsync function startLoggerTest() {
+
+    console.log("----------->>> start Logger test...");
+
 	var counter = 0;
 	nanoTimerObject.setInterval(function() {
 	    if (logTime[1] !== undefined) {
@@ -96,7 +99,7 @@ jsync function startLoggerTest() {
 	    		tests.logger.push(delay);
 	    		counter = logTime[1].index_of_last_value;
 	    	}
-    		if(counter === numTests) {
+    		if(counter >= numTests) {
     			nanoTimerObject.clearInterval();
     			broadcastStarter();
     		}

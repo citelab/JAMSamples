@@ -94,6 +94,8 @@ void syncRoundTrip() {
 }
 
 void loggerTime() {
+  printf("In loggerTime.. \n");
+
 	struct timespec sleepValue;
    	sleepValue.tv_sec = 0;
    	sleepValue.tv_nsec = 100000000L;
@@ -110,11 +112,13 @@ void loggerTime() {
 
 jasync broadcastStarter() {
 	int count = 0;
-	char* lastVal;
+	char* lastVal = NULL;
 	char* curVal;
 	char buf[50];
 	char *ptr;
 	broadcastTest();
+
+	printf("Before broadcaster while \n");
 
 	FILE *f = fopen("broadcast.txt", "w");
 	while(1) {

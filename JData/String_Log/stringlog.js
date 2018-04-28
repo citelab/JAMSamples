@@ -19,7 +19,7 @@ setInterval(function() {
 
 	for (i = 0; i < name.size(); i++) {
 	    if (name[i] !== undefined) {
-		console.log(name[i].lastValue());
+		console.log("I: ", i, " Name ", name[i].lastValue());
 		console.log(name[i].getDeviceId());
 	    }
 	    else
