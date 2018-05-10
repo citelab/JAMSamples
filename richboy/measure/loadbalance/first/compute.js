@@ -87,7 +87,7 @@ function processArrayData(dataArray, stream){
     console.log("First element is", dataArray[0]);
     var randomizedDataArray = randomizeData(dataArray);
     var trainData = selectTrainData(randomizedDataArray);
-    var testData = selectTestData(randomizedDataArray);
+    //var testData = selectTestData(randomizedDataArray);
 
     var trainer = new Trainer(myNetwork);
 
@@ -171,8 +171,8 @@ function randomizeData(array){
     return newArray;
 }
 
-function selectTrainData(array){
-    return Flow.from(array).limit(Math.ceil(1.0 * array.length)).select(elem => {var parts = elem.split(','); return {input: [parts[2]-0, parts[3]-0], output: oneHotEncode(parts[4])};}).collect();
+function selectTrainData(array){//limit(Math.ceil(1.0 * array.length)).
+    return Flow.from(array).select(elem => {var parts = elem.split(','); return {input: [parts[2]-0, parts[3]-0], output: oneHotEncode(parts[4])};}).collect();
 }
 
 function selectTestData(array){
