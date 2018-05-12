@@ -8,41 +8,25 @@ jcond{
     isDevice: sys.type == "device";
 }
 
-var fs = require('fs');
-var synaptic = require('synaptic');
-var Neuron = synaptic.Neuron,
-    Layer = synaptic.Layer,
-    Network = synaptic.Network,
-    Trainer = synaptic.Trainer;
-
-// create the network
-var inputLayer = new Layer(2);
-var hiddenLayer = new Layer(2);
-var outputLayer = new Layer(5);
-
-inputLayer.project(hiddenLayer);
-hiddenLayer.project(outputLayer);
-
-var myNetwork = new Network({
-    input: inputLayer,
-    hidden: [hiddenLayer],
-    output: outputLayer
-});
-
+var Worker = require('webworker-threads').Worker;
 var myFlow = Flow.from(sensePack.getMyDataStream());
 
 var outflow = new OutFlow(myFlow, JAMManager);
 outflow.setName("fixed");
 outflow.start();
 
-var directions = ['Move-Forward', 'Sharp-Right-Turn', 'Slight-Right-Turn', 'Sharp-Left-Turn', 'Slight-Left-Turn'];
 var deviceId = 0;
-var PROCESS_COUNT = 1000;    //the number of items each device will process.
-var trainCount = 0.8 * PROCESS_COUNT;
 var droneData = {}; //stores all the received data from the devices in a datastream key/array pair format
+
+var isRequestPending = false;
+var queue = []; //work queue. When ever the worker is free, it requests for data and we will send it from this queue
+var queuePointer = -1;
+var worker;
+var completed = 0;  //number of jobs completed by the worker
 
 // jsync function to assign id's to devices
 jsync {isFog} function getId() {
+    console.log("Got here");
     var id = ++deviceId;
     return id + "";
 }
@@ -57,16 +41,66 @@ else
 //announcer.addHook((data) => {console.log(data);});
 
 if( JAMManager.isFog ) {
+    //create a worker.
+    worker = new Worker("worker.js");
+
+    worker.onmessage = function(event){
+        console.log("message received form worker", event);
+        var msg = event.data;
+        switch(msg.cmd){
+            case "newJob":
+                console.log("new job requested");
+                //get oldfirst job
+                if( queuePointer < queue.length - 1 ){
+                    queuePointer++;
+                    worker.postMessage({cmd: 'newJob', data: queue[queuePointer].data});
+                }
+                else
+                    isRequestPending = true;
+
+                break;
+            case "completed":
+                console.log("completed a job");
+                completed++;
+                transfer(msg.data, msg.network);    //send to outflow
+
+                //check if completed equals the number of devices
+                if( completed == deviceId ){
+                    console.log("Program completed...");
+                    worker.terminate();
+                }
+                else{//check if we have any more job
+                    if( queuePointer < queue.length - 1 ){
+                        isRequestPending = false;
+                        queuePointer++;
+                        worker.postMessage({cmd: 'newJob', data: queue[queuePointer].data});
+                    }
+                    else
+                        isRequestPending = true;
+                }
+
+                break;
+        }
+    };
+
     sensePack.subscribe((key, entry, stream) => {
+        if( stream.getKey() == sensePack.getMyDataStream().getKey() )   //skip logs by this stream. It's for outflow
+            return;
+
         console.log("received", JSON.stringify(entry.log));
 
-        if( !droneData[key] )
+        if (!droneData[key])
             droneData[key] = [];
 
-        if( entry.log == "done" ) {
-            //start training the data for this device
-            processArrayData(droneData[key], stream);
-            return;
+        if (entry.log == "done") {
+            //save to queue
+            queue.push({data: droneData[key], stream: stream});
+
+            if( isRequestPending ){
+                isRequestPending = false;
+                queuePointer++;
+                worker.postMessage({cmd: 'newJob', data: queue[queuePointer].data});
+            }
         }
         else
             droneData[key].push(entry.log);
@@ -82,24 +116,11 @@ if( JAMManager.isFog ) {
 }
 
 
-
-function processArrayData(dataArray, stream){
-    console.log("First element is", dataArray[0]);
-    var randomizedDataArray = randomizeData(dataArray);
-    var trainData = selectTrainData(randomizedDataArray);
-    //var testData = selectTestData(randomizedDataArray);
-
-    var trainer = new Trainer(myNetwork);
-
-    var results = trainer.train(trainData, {rate: .2, iterations: 20000, shuffle: false});
-    console.log("Done training!\n", results);
-    //startBroadcast(testData, stream);
-    transfer(dataArray, myNetwork.toJSON()); //send to outflow
-}
-
-function transfer(array, network){
-    myFlow.push(array[0]);
-    myFlow.push("Network=" + JSON.stringify(network));   //send the network to the next application for prediction
+function transfer(data, network){
+    sensePack.getMyDataStream().log(data + "");
+    sensePack.getMyDataStream().log("Network=" + JSON.stringify(network));
+    //myFlow.push(data);
+    //myFlow.push("Network=" + JSON.stringify(network));   //send the network to the next application for prediction
 }
 
 // function startBroadcast(array, stream){
@@ -122,59 +143,3 @@ var initialLoad = setInterval(function(){
         console.log("Waiting for devices to become available...", sensePack.size());
     }
 }, 1000);
-
-function oneHotEncode(direction){
-    switch(direction){
-        case "Move-Forward":
-        case "Move-Forward\n": return [1, 0, 0, 0, 0];
-
-        case "Sharp-Right-Turn":
-        case "Sharp-Right-Turn\n": return [0, 1, 0, 0, 0];
-
-        case "Slight-Right-Turn":
-        case "Slight-Right-Turn\n": return [0, 0, 1, 0, 0];
-
-        case "Sharp-Left-Turn":
-        case "Sharp-Left-Turn\n": return [0, 0, 0, 1, 0];
-
-        case "Slight-Left-Turn":
-        case "Slight-Left-Turn\n": return [0, 0, 0, 0, 1];
-    }
-    console.log("\nERROR!!! Drone Direction not found!\n");
-    return [0,0,0,0,0];
-}
-
-function oneHotDecode(array){
-    array = Flow.from(array).select(elem => Math.round(elem)).collect();
-    var index = -1;
-    for( var i = 0; i < array.length; i++ ){
-        if( parseInt(array[i]) === 1 ){
-            index = i;
-            break;
-        }
-    }
-    if( index === -1 ){
-        console.log("Decode ERROR!!!");
-        return "Error";
-    }
-    return directions[i];
-}
-
-function randomizeData(array){
-    var newArray = array.slice(0);  //clone the original array first
-    for (var i = newArray.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = newArray[i];
-        newArray[i] = newArray[j];
-        newArray[j] = temp;
-    }
-    return newArray;
-}
-
-function selectTrainData(array){//limit(Math.ceil(1.0 * array.length)).
-    return Flow.from(array).select(elem => {var parts = elem.split(','); return {input: [parts[2]-0, parts[3]-0], output: oneHotEncode(parts[4])};}).collect();
-}
-
-function selectTestData(array){
-    return Flow.from(array).skip(Math.ceil(0.5 * array.length)).select(elem => {var parts = elem.split(','); return {input: [parts[2]-0, parts[3]-0], output: oneHotEncode(parts[4]), expected: parts[4].replace("\n", ""), id: parts[parts.length - 1] - 0, nodeID: parts[parts.length - 2]};}).collect();
-}
