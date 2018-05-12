@@ -1,0 +1,1 @@
+This is similar to the tofog application. However, the trained network is shared further from the second application running on the fog to the cloud. The time measured is from the device log time to when the cloud receives the trained network.

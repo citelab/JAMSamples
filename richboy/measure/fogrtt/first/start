@@ -1,0 +1,11 @@
+djam init --zones=1 --indelay=3:1 --outdelay=5:3 --cldelay=30:5
+
+#djam run overhead.jxe --cloud --app=overhead --bg
+
+for i in `seq 1 4`; do
+    djam run ohfog.jxe --fog --tags="sampletag" --app=ohfog --log
+done
+
+for i in `seq 1 16`; do
+    djam run ohfog.jxe --app=ohfog --num=5 --tag="sampletag"  --bg
+done

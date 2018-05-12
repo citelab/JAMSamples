@@ -1,0 +1,1 @@
+In this application, we are measuring the time is takes from the device C to log data through to the Fog. The fog uses a worker to train the data using machine learning and then shares the trained neural network to another application running in the fog. The time is from the device log time to when the trained network arrives at the second application.

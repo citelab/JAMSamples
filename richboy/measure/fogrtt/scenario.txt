@@ -1,0 +1,6 @@
+In this application, we are sending data from the devices to the fog. The fog offloads the data to another another
+application to do machine learning which then returns the result to the original application.
+The application broadcasts the trained neural network information back to the device for faster prediction.
+In this example however, the broadcast stops at the device J because the network data is only readable in Javascript.
+Since the device J and the device C and basically on physical device (in this case), we can argue that communication
+time is negligible.
