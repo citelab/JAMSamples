@@ -1,0 +1,1 @@
+console.log("The tags on the J side is ", jsys.tags);
