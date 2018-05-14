@@ -20,7 +20,7 @@ setInterval(function() {
 	for (i = 0; i < name.size(); i++) {
 	    if (name[i] !== undefined) {
 		console.log("I: ", i, " Name ", name[i].lastValue());
-		console.log(name[i].getDeviceId());
+		//		console.log(name[i].getDeviceId());
 	    }
 	    else
 		console.log("Logger value undefined...");
