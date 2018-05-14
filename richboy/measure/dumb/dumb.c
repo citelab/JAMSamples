@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 int main(int argc, char** argv){
-    printf("C is running...\n");
+    printf("C is running...with tag %s\n", dev_tag);
 
     printf("Number of arguments are: %d\n", argc);
     for(int i = 0; i < argc; i++){
