@@ -1,0 +1,9 @@
+{
+  "name": "second",
+  "version": "0.0.1",
+  "dependencies": {
+    "synaptic": "^1.1.4",
+    "microtime": "^2.1.7",
+    "webworker-threads": "^0.7.13"
+  }
+}
