@@ -1,0 +1,7 @@
+djam init --zones=1 --indelay=3:1 --outdelay=5:3 --cldelay=30:5
+
+#djam run compute.jxe --cloud --app=second --bg
+
+for i in `seq 1 4`; do
+    djam run compute.jxe --fog --app=second --log --bg
+done

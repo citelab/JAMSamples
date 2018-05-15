@@ -1,0 +1,10 @@
+
+#jam run compute.jxe.jxe --cloud --app=q5 --bg
+
+for i in `seq 1 4`; do
+    jam run compute.jxe --fog --app=first --bg --log
+done
+
+for i in `seq 1 16`; do
+    jam run compute.jxe --app=first --bg --tags=$i
+done
