@@ -1,5 +1,7 @@
-#djam exec --type=cloud --app=first --program=compute --xapp=second compute.jxe
+djam init --zones=1 --indelay=3:1 --outdelay=5:3 --cldelay=30:5
+
+#djam exec --type=cloud --app=second --program=compute --xapp=second compute.jxe
 
 for i in `seq 1 4`; do
-    djam exec --type=fog --app=first --program=compute --xapp=second compute.jxe --bg --log
+    djam run compute.jxe --fog --app=second --log --bg
 done
