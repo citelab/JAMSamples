@@ -1,6 +1,6 @@
 jdata{
     char* heartRate as logger;
-    char* heartRate2 as logger;
+    char* heartRate2 as logger(fog);
     filterFlow as flow with filterFlowFunc of heartRate;
 }
 
@@ -11,8 +11,9 @@ filterFlow.setTerminalFunction(forwardData);
 if( JAMManager.isDevice )
     filterFlow.startPush();
 
-var filtered = new OutFlow(Flow.from(myStream), JAMManager);
+var filtered = new OutFlow(Flow.from(heartRate2), JAMManager);
 filtered.setName("filtered");
+
 
 if( JAMManager.isDevice ) {
     console.log("device has started...");
