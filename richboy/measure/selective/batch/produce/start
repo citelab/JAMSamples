@@ -1,0 +1,22 @@
+djam init --zones=1 --indelay=3:1 --outdelay=5:3 --cldelay=30:5
+
+#djam run produce.jxe --cloud --app=produce --bg
+
+#for i in `seq 1 8`; do
+    djam run produce.jxe --fog --app=produce --log --bg
+#done
+
+sleep 5
+
+cd ~/JAMSamples/richboy/measure/selective/batch/consume/
+
+#for i in `seq 1 12`; do
+    djam exec --type=fog --app=produce --program=produce --xapp=consume consume.jxe --bg --log
+    sleep 1
+#done
+
+cd ~/JAMSamples/richboy/measure/selective/batch/produce/
+
+#for i in `seq 1 24`; do
+    djam run produce.jxe --app=produce --tags=$i --bg
+#done
