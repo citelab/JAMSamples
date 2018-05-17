@@ -1,9 +1,22 @@
+djam init --zones=1 --indelay=3:1 --outdelay=5:3 --cldelay=30:5
+
 #djam run compute.jxe --cloud --app=first --bg
 
 for i in `seq 1 4`; do
-    djam exec --type=fog --app=second --program=compute --xapp=first compute.jxe --bg --log
+    djam run compute.jxe --fog --app=first --log --bg
 done
 
-for i in `seq 1 16`; do
-    djam exec --app=second --program=compute --xapp=first compute.jxe --tags=$i --bg
+sleep 5
+
+cd ~/JAMSamples/richboy/measure/tofog2/second/
+
+for i in `seq 1 8`; do
+    djam exec --type=fog --app=first --program=compute --xapp=second compute.jxe --bg --log
+    sleep 1
+done
+
+cd ~/JAMSamples/richboy/measure/tofog2/first/
+
+for i in `seq 1 24`; do
+    djam run compute.jxe --app=first --tags=$i --bg
 done
