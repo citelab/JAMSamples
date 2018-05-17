@@ -7,7 +7,9 @@ jdata{
 var myStream = heartRate2.getMyDataStream();
 
 filterFlow.setTerminalFunction(forwardData);
-filterFlow.startPush();
+
+if( JAMManager.isDevice )
+    filterFlow.startPush();
 
 var filtered = new OutFlow(Flow.from(myStream), JAMManager);
 filtered.setName("filtered");
@@ -31,6 +33,8 @@ function filterFlowFunc(inputFlow){
 if( JAMManager.isFog ){
     filtered.start();
     heartRate2.subscribe(function (key, entry, stream) {
+        if( stream.getKey() == myStream.getKey() )
+            return;
         console.log("received:", entry.log);
     });
 }

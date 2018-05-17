@@ -22,6 +22,9 @@ else
 if( JAMManager.isFog ){
     filtered.start();
     heartRate.subscribe(function (key, entry, stream) {
+        if( stream.getKey() == myStream.getKey() )
+            return;
+
         console.log("received:", entry.log);
 
         queue.push(entry.log);
