@@ -3,6 +3,7 @@ jdata{
     char* timing as logger(fog);
     char* announcer as broadcaster;
     int tagID as logger(fog);
+    int flag as logger(cloud);
 }
 
 jcond{
@@ -18,6 +19,7 @@ var ws;
 var deviceId = 0;
 var myID;
 var resource = null;
+var flagVal = 0;
 
 
 // jsync function to assign id's to devices
@@ -55,7 +57,7 @@ if( !JAMManager.isDevice ) {
 
         if( resource != null && JAMManager.isFog && entry.log != "done" )
             transfer(entry.log);
-        else if (JAMManager.isCloud && entry.log != "done") {
+        else if (JAMManager.isCloud && entry.log != "done" && flagVal == 0) {
             //broadcast down to the device
             transfer(entry.log);
         }
@@ -82,6 +84,14 @@ if( JAMManager.isDevice ){//intercept broadcast and measure time
 if( JAMManager.isFog ){
     announcer.addHook(function(pack){
         resource = pack.message;
+        flag.getMyDataStream().log(20);
+    });
+}
+
+if( JAMManager.isCloud ){
+    flag.subscribe(function(key, entry, stream){
+        if( !isNaN(parseInt(entry.log)) )
+            flagVal = parseInt(entry.log);
     });
 }
 
