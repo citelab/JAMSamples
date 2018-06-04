@@ -10,7 +10,7 @@ jdata{
 }
 
 function toDiscretizer(inputFlow){
-    return inputFlow.discretize(3, 1, true, stream => stream.key !== x.getMyDataStream().key);
+    return inputFlow.discretize(3, 1, true, stream => !stream.key.includes("_"));//filter out J streams
 }
 
 //just print some values off the discreteFlow
@@ -27,9 +27,14 @@ f.setTerminalFunction(terminalFunc);
 //poll until we have up to 3 C-Nodes running
 (function poll(){
     if( x.size() < 3 ){
+        for(var i = 0; i < x.size(); i++)
+            console.log(x[i].key);
         console.log("waiting till we have 3 C-nodes running");
         setTimeout(poll, 2000);
     }
-    else
+    else {
+        for(var i = 0; i < x.size(); i++)
+            console.log(x[i].key);
         f.startPush();
+    }
 })();
