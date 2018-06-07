@@ -19,7 +19,7 @@ var terminalFunc = discreteFlow => {
     var avg = flow.average();
     var sum = flow.sum();
 
-    console.log("Sum: " + sum + ", Average: " + avg);
+    console.log("Sum: " + sum + ", Average: " + avg + ", Data: " + flow.collect());
 };
 
 f.setTerminalFunction(terminalFunc);

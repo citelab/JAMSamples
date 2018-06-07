@@ -3,7 +3,7 @@
 jactivity_t *print_msg(char*, jcallback);
 
 void cbf(char* abc) {
-	printf("I should be in C... Message received\n");
+	printf("I should be in C... Message received: %s\n", abc);
 }
 
 int main() {
