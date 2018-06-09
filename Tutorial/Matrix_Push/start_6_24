@@ -2,11 +2,11 @@ djam init --zones=4 --indelay=5:2 --outdelay=10:3 --cldelay=30:6
 
 #jamrun mpush.jxe --app=xx35 --cloud --data=127.0.0.1:9010  --bg
 
-for i in `seq 1 8`; do
+for i in `seq 1 6`; do
     djamrun mpush.jxe --app=xx35 --fog  --bg --log
 done
 
-for i in `seq 1 50`; do
+for i in `seq 1 24`; do
     djamrun mpush.jxe --app=xx35 --num=4  --bg --log
 done
 

@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     id = getID();
     printf("My ID is %d\n", id);
 
-    FILE *fp = fopen("small.mtx", "r");
+    FILE *fp = fopen("huge.mtx", "r");
     if (fp == NULL)
     {
         printf("ERROR! Unable to open the file ..\n");
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
             int x, y;
             float val;
             sscanf(line, "%d %d %F", &x, &y, &val);
-
+            printf("Percent pushed: %f\n", (linenum * 1.0)/count);
             mrow = {
                 .x: x,
                 .y: y,
