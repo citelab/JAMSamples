@@ -14,7 +14,7 @@ int count;
 
 int maxtasks = 500;
 int goodreqs = 0, badreqs = 0;
-
+int last_req_failed = 0;
 
 void start_clock()
 {
