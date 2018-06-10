@@ -48,7 +48,7 @@ void next_process(char *msg)
         usleep(500000);
         char buf[32];
         sprintf(buf, "%d", count);
-        read_clock();
+        last_req_failed = 1;
         processRequest(buf, next_process);
         badreqs++;
     }
@@ -56,7 +56,14 @@ void next_process(char *msg)
     {
         char buf[32];
         sprintf(buf, "%d", count);
-        printf("Request time: %g\n", read_clock());
+        if (last_req_failed)
+        {
+            last_req_failed = 0;
+            maxtasks++;
+            printf("Request time (for retry): %g\n", read_clock());
+        } else
+            printf("Request time: %g\n", read_clock());
+
         usleep(500000);
         read_clock();
         processRequest(buf, next_process);
