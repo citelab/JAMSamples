@@ -1,4 +1,7 @@
 
+void pingMe();
+
+
 int main()
 {
   char *names[10] = {"david", "mayer", "justin", "richard", "lekan", "ben", "owen", "nicholas", "karu", "clark"};
@@ -7,9 +10,10 @@ int main()
 
   for (i = 0; i < 1000; i++) {
     sprintf(buf, "%d-%s", i, names[i % 10]);
-    name = buf; 
+    name = buf;
     printf("Wrote .. name: %s\n", buf);
     sleep(1);
+    pingMe();
   }
 
 }

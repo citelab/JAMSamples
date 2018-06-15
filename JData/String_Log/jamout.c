@@ -11,6 +11,12 @@ char jdata_buffer[20];
 char app_id[64] = { 0 };
 char dev_tag[32] = { 0 };
 int ndevices;
+void pingMe() {
+jact = jam_create_activity(js);
+jact = jam_rexec_async(js, jact, "jcond.get('fogonly').source", 2, "pingMe", "");
+activity_free(jact);
+}
+
 int user_main() {
 char *names[10] = {"david", "mayer", "justin", "richard", "lekan", "ben", "owen", "nicholas", "karu", "clark"};
 int i;
@@ -20,6 +26,7 @@ sprintf(buf, "%d-%s", i, names[i % 10]);
 jamdata_log_to_server("global", "name", buf, 0);
 printf("Wrote .. name: %s\n", buf);
 sleep(1);
+pingMe();
 }
 }
 

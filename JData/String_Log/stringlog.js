@@ -1,10 +1,20 @@
+
 jdata {
     char *name as logger;
 }
 
+jcond {
+    fogonly: sys.type == "fog";
+}
+
+
 var nlogger = name.getMyDataStream();
 
 var count = 1;
+
+jasync {fogonly} function pingMe() {
+    console.log("Ping from the device....");
+}
 
 setInterval(function() {
 
