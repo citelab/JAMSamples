@@ -11,8 +11,8 @@ var count =10;
 
 
 jasync {fogonly} function sendbcast() {
-   console.log("Sending broadcast....", count);
-   var msg = "hello-" + count
+   console.log("Sending broadcast....", count++);
+   var msg = "hello..you..have..msg-" + count
    y.broadcast(msg);
 }
 

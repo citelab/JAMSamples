@@ -1,0 +1,11 @@
+
+
+#jamrun mpush.jxe --app=xx35 --cloud --data=127.0.0.1:9010  --bg
+
+jamrun mded.jxe --app=xx35 --fog --data=127.0.0.1:7011 --bg --log
+
+for i in `seq 1 2`; do
+    jamrun mded.jxe --app=xx35 --data=127.0.0.1:601$i --num=4  --bg --log
+done
+
+

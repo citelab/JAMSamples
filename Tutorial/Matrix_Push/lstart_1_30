@@ -1,0 +1,11 @@
+
+for i in `seq 1 9`; do
+    jamrun mded.jxe --app=qqxx35 --data=127.0.0.1:655$i --num=4  --bg --log
+done
+
+for i in `seq 10 29`; do
+    jamrun mded.jxe --app=qqxx35 --data=127.0.0.1:66$i --num=4  --bg --log
+done
+
+
+#jamrun mded.jxe --app=qqxx35 --fog --data=127.0.0.1:7051

@@ -1,4 +1,4 @@
-var Chance = require('require');
+var Chance = require('chance');
 var chance = new Chance();
 
 jdata {

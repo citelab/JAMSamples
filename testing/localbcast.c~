@@ -1,0 +1,29 @@
+
+jasync checkx()
+{
+  char *msg;
+  while(1)
+    {
+      msg = x;
+      printf("%s\n", msg);
+    }
+}
+
+
+jasync checky()
+{
+  char *msg;
+  while(1)
+    {
+      msg = y;
+      printf("%s\n", msg);
+    }
+}
+
+
+int main(int argc, char *argv[])
+{
+  checkx();
+  checky();
+
+}

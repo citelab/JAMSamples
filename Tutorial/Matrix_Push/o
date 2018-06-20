@@ -1,0 +1,3331 @@
+/Users/maheswar/__jamruns/apps/mded_qqxx35
+Script started on Sun Jun 17 19:42:58 2018
+command: node jamout.js --app=qqxx35 --port=1883 --data=127.0.0.1:6551 --link=random --long=176.9511 --lat=26.2510 --device
+Script started on Sun Jun 17 19:42:58 2018
+command: node jamout.js --app=qqxx35 --port=1884 --data=127.0.0.1:6552 --link=random --long=84.5483 --lat=34.3502 --device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+(node:38052) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6551
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:42:59 2018
+command: node jamout.js --app=qqxx35 --port=1885 --data=127.0.0.1:6553 --link=random --long=100.8444 --lat=33.7024 --device
+Script started on Sun Jun 17 19:42:59 2018
+command: node jamout.js --app=qqxx35 --port=1886 --data=127.0.0.1:6554 --link=random --long=142.5453 --lat=74.2936 --device
+(node:38163) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6552
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:00 2018
+command: node jamout.js --app=qqxx35 --port=1887 --data=127.0.0.1:6555 --link=random --long=30.7858 --lat=33.7572 --device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+(node:38279) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6553
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Script started on Sun Jun 17 19:43:01 2018
+command: node jamout.js --app=qqxx35 --port=1888 --data=127.0.0.1:6556 --link=random --long=115.1613 --lat=72.3005 --device
+Waiting for for C nodes at device
+(node:38404) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6554
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+(node:38531) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6555
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:02 2018
+command: node jamout.js --app=qqxx35 --port=1889 --data=127.0.0.1:6557 --link=random --long=128.2356 --lat=11.5430 --device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Waiting for for C nodes at device
+Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Script started on Sun Jun 17 19:43:03 2018
+command: node jamout.js --app=qqxx35 --port=1890 --data=127.0.0.1:6558 --link=random --long=76.2857 --lat=47.384 --device
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+(node:38662) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6556
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+(node:38798) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6557
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+(node:38938) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6558
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Script started on Sun Jun 17 19:43:05 2018
+command: node jamout.js --app=qqxx35 --port=1891 --data=127.0.0.1:6559 --link=random --long=131.346 --lat=74.2331 --device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:06 2018
+command: node jamout.js --app=qqxx35 --port=1892 --data=127.0.0.1:6610 --link=random --long=132.292 --lat=70.5632 --device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+Waiting for for C nodes at device
+(node:39085) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6559
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+(node:39240) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6610
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:08 2018
+command: node jamout.js --app=qqxx35 --port=1893 --data=127.0.0.1:6611 --link=random --long=59.3108 --lat=76.5128 --device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:09 2018
+command: node jamout.js --app=qqxx35 --port=1894 --data=127.0.0.1:6612 --link=random --long=3.1392 --lat=52.1754 --device
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:39397) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6611
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:39560) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6612
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Waiting for for C nodes at device
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:18 2018
+command: node jamout.js --app=qqxx35 --port=1895 --data=127.0.0.1:6614 --link=random --long=161.5334 --lat=80.728 --device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:19 2018
+command: node jamout.js --app=qqxx35 --port=1896 --data=127.0.0.1:6615 --link=random --long=41.1956 --lat=29.5144 --device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+(node:39824) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6614
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+(node:40002) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6615
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:21 2018
+command: node jamout.js --app=qqxx35 --port=1897 --data=127.0.0.1:6616 --link=random --long=162.8022 --lat=28.675 --device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+(node:40178) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6616
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:23 2018
+command: node jamout.js --app=qqxx35 --port=1898 --data=127.0.0.1:6617 --link=random --long=5.7029 --lat=89.807 --device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:40361) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6617
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:26 2018
+command: node jamout.js --app=qqxx35 --port=1899 --data=127.0.0.1:6618 --link=random --long=151.7143 --lat=33.1497 --device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DHello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:40552) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6618
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:29 2018
+command: node jamout.js --app=qqxx35 --port=1900 --data=127.0.0.1:6619 --link=random --long=152.2653 --lat=82.8143 --device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^D..........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Waiting for for C nodes at device
+(node:40743) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6619
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+.............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:33 2018
+command: node jamout.js --app=qqxx35 --port=1901 --data=127.0.0.1:6620 --link=random --long=64.2454 --lat=77.187 --device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DWaiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:40939) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6620
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:38 2018
+command: node jamout.js --app=qqxx35 --port=1902 --data=127.0.0.1:6621 --link=random --long=9.3535 --lat=24.158 --device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DSize accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Waiting for for C nodes at device
+....................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:41146) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6621
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:42 2018
+command: node jamout.js --app=qqxx35 --port=1903 --data=127.0.0.1:6622 --link=random --long=178.5479 --lat=32.4911 --device
+Waiting for for C nodes at device
+.......................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+......................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^D.Waiting for for C nodes at device
+Do some processing...
+Waiting for for C nodes at device
+........................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+......................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+...Waiting for for C nodes at device
+.........................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+......................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+(node:41352) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6622
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+..........................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+.......................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+........................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:47 2018
+command: node jamout.js --app=qqxx35 --port=1904 --data=127.0.0.1:6623 --link=random --long=158.6073 --lat=59.1636 --device
+..Waiting for for C nodes at device
+............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DWaiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+.............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+....................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+..............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:41564) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6623
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+...............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Script started on Sun Jun 17 19:43:52 2018
+command: node jamout.js --app=qqxx35 --port=1905 --data=127.0.0.1:6624 --link=random --long=75.5006 --lat=66.6149 --device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+..............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+^D.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+...............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:41781) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6624
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+.................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Script started on Sun Jun 17 19:43:57 2018
+command: node jamout.js --app=qqxx35 --port=1906 --data=127.0.0.1:6625 --link=random --long=107.928 --lat=72.424 --device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+..................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+^D.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+..................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:42002) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6625
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+...............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+...........................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Script started on Sun Jun 17 19:44:02 2018
+command: node jamout.js --app=qqxx35 --port=1907 --data=127.0.0.1:6626 --link=random --long=156.2317 --lat=40.9060 --device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................Waiting for for C nodes at device
+.....................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..^D...Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+(node:42230) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6626
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................Waiting for for C nodes at device
+....................Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............................Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Script started on Sun Jun 17 19:44:07 2018
+command: node jamout.js --app=qqxx35 --port=1908 --data=127.0.0.1:6627 --link=random --long=60.6334 --lat=25.3652 --device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............................Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+^DDo some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+.........................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+.........................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+.........................Waiting for for C nodes at device
+(node:42461) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6627
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........................Waiting for for C nodes at device
+..........................Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+.......................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.................................Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+.......................Script started on Sun Jun 17 19:44:12 2018
+command: node jamout.js --app=qqxx35 --port=1909 --data=127.0.0.1:6628 --link=random --long=54.4641 --lat=53.3643 --device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+............Waiting for for C nodes at device
+........Waiting for for C nodes at device
+....................^DWaiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+.............Waiting for for C nodes at device
+........Waiting for for C nodes at device
+....................Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+.............Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:42702) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6628
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+........Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Do some processing...
+.......................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+............Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Script started on Sun Jun 17 19:44:17 2018
+command: node jamout.js --app=qqxx35 --port=1910 --data=127.0.0.1:6629 --link=random --long=99.3812 --lat=52.3951 --device
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+.............Waiting for for C nodes at device
+................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+..^D...........................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Hello... { cloud: [90mundefined[39m, fog: [90mundefined[39m, data: [90mundefined[39m }
+JAMLib 1.0beta Initialized.
+..............................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................................................Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+(node:42942) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+-------------------   127.0.0.1  ---  6629
+Emitting... ..data-up
+Setup advertisement... 
+----------------------------------  fog-up ef5688f0-31d1-431d-b902-db90984af8f8 { port: [33m5883[39m,
+  ip: [32m'10.0.1.117'[39m,
+  loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } }
+(doRegister) FOG UP: id: ef5688f0-31d1-431d-b902-db90984af8f8, ip: 10.0.1.117, port: 5883
+----------------------------------  fog-datadepot-up ef5688f0-31d1-431d-b902-db90984af8f8 { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m }
+1==================================================
+Waiting for for C nodes at device
+--------------- |||Setting the fog...---------------
+Emiting. fog up.....................
+--------------------Selecting another fog...... Redis { key: [32m'ef5688f0-31d1-431d-b902-db90984af8f8'[39m,
+  val:
+   { port: [33m5883[39m,
+     ip: [32m'10.0.1.117'[39m,
+     loc: { long: [33m3.3946[39m, lat: [33m55.9165[39m } },
+  redis: { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } }
+Fog Data Up ------------------------- { host: [32m'127.0.0.1'[39m, port: [32m'7051'[39m } null
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................................................Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+.................................................Waiting for for C nodes at device
+............Waiting for for C nodes at device
+...................Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+.Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+.......................................................Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+.......................................................Waiting for for C nodes at device
+........Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..............................Waiting for for C nodes at device
+.....................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+..........................................................Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+..........................................................Waiting for for C nodes at device
+......Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............................Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+..........................................................Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+..........................................................Waiting for for C nodes at device
+........Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.............................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+........................................................Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Do some processing...
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+.............................................................Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+.....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.....................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..............Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+......................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+.............................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.......................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+..............................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.......................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+...............................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.........................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+..........................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+Do some processing...
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+Size accumulated:  1294
+--------------------
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+.................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+..................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+.............Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+........................................................Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+............................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+.............................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+.....................................Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+..............................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+.............................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+..............................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................................................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+...............................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................................................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+...............................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................................................Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+........Waiting for for C nodes at device
+...............................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+........Waiting for for C nodes at device
+................................................................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................................................Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+...............................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................................................Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+...............................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................................................Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+............Waiting for for C nodes at device
+.............................................................................Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................................................Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+..............................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+.............................................................................Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+..............................................................................Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+.............................................................................Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................................................Waiting for for C nodes at device
+................................................Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+..........................................................................Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+...................................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+.......Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+...................................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+......................Waiting for for C nodes at device
+.......................................................................Waiting for for C nodes at device
+........Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................................................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+.......................Waiting for for C nodes at device
+......................................................................Waiting for for C nodes at device
+.........Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................................................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+............................Waiting for for C nodes at device
+.................................................................Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................................................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+.........................Waiting for for C nodes at device
+....................................................................Waiting for for C nodes at device
+............Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+......................................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+................................Waiting for for C nodes at device
+........................................................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+.....................................................Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+......................................................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+.......................................................Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+......................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+..................................................Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+.......................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+......Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+.......................................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+........................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..............Waiting for for C nodes at device
+.........................................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+.........................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+........................................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+..........................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+...........................................................Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+........................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+..........................................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+..........................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+..........................................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+.....................................Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+.....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+..........................................................Waiting for for C nodes at device
+................................................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+.........................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+..............................................................Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+..........................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+...............................................................Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+............Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........Waiting for for C nodes at device
+...............................................................Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+................................................................Waiting for for C nodes at device
+..................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+................................................................Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................Waiting for for C nodes at device
+.................................................................Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+............................................................................Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................Waiting for for C nodes at device
+................................................................Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+.............................................................................Waiting for for C nodes at device
+........Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................Waiting for for C nodes at device
+................................................................Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+..............................................................................Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................Waiting for for C nodes at device
+..................................................................Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+...............................................................................Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+........................Waiting for for C nodes at device
+.................................................................Waiting for for C nodes at device
+.....................................Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+................................................................................Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+..................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+........................Waiting for for C nodes at device
+....................................................................Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+................................................................................Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+.......................................................................Waiting for for C nodes at device
+.................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+................................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+......................................................................Waiting for for C nodes at device
+..................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+.................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+......................................................................Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+..................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+....................................................................Waiting for for C nodes at device
+...................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+...................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+.....................................................................Waiting for for C nodes at device
+....................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+....................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+....................................................................Waiting for for C nodes at device
+.....................................Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+....................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+....................................................................Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+...................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+.....................................................................Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+....................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.................................................Waiting for for C nodes at device
+................................................................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+....................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.................................................Waiting for for C nodes at device
+...................................................................Waiting for for C nodes at device
+.....................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+.....................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+..................................................................Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+......................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+...................................................Waiting for for C nodes at device
+.................................................................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+.......................................................................................Waiting for for C nodes at device
+...Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+...................................................Waiting for for C nodes at device
+.................................................................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+........................................................................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+...................................................................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+.........................................................................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+...................................................................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+.........................................................................................Waiting for for C nodes at device
+..Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+......Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+.....................................................................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+..........................................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................................................Waiting for for C nodes at device
+.....................................................................Waiting for for C nodes at device
+......................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+...........................................................................................Waiting for for C nodes at device
+....Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+......................................................Waiting for for C nodes at device
+.....................................................................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+..............................................Waiting for for C nodes at device
+.................................................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+....Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+................Waiting for for C nodes at device
+.....................................Waiting for for C nodes at device
+......................................................................Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+....................................................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.................Waiting for for C nodes at device
+.....................................Waiting for for C nodes at device
+.......................................................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+.................................................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+..Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+...............Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+......................................................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+...........................................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.................Waiting for for C nodes at device
+.......................................Waiting for for C nodes at device
+.......................................................................Waiting for for C nodes at device
+...........................................Waiting for for C nodes at device
+...............................................Waiting for for C nodes at device
+..........................................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+........................................................................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+................................................Waiting for for C nodes at device
+........................................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.....................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+..........................................................................Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+.................................................Waiting for for C nodes at device
+......................................................................................Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+.........................................Waiting for for C nodes at device
+.......................................................Waiting for for C nodes at device
+................................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.......................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+............................................Waiting for for C nodes at device
+.....................................................Waiting for for C nodes at device
+................................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.........................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+...........................................................................Waiting for for C nodes at device
+.............................................Waiting for for C nodes at device
+..................................................Waiting for for C nodes at device
+..................................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+...........................Waiting for for C nodes at device
+........................................Waiting for for C nodes at device
+.............................................................................Waiting for for C nodes at device
+................................................Waiting for for C nodes at device
+....................................................Waiting for for C nodes at device
+............................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+............................Waiting for for C nodes at device
+..........................................Waiting for for C nodes at device
+.............................................................................Waiting for for C nodes at device
+................................................Waiting for for C nodes at device
+........................................................Waiting for for C nodes at device
+....................................................................Waiting for for C nodes at device
+.Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+.Waiting for for C nodes at device
+........Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+Waiting for for C nodes at device
+............
