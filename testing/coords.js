@@ -5,7 +5,7 @@ jdata {
 
 
 jcond {
-    fogonly: sys.type == "fog";
+    fogonly: jsys.type == "fog";
 }
 
 
