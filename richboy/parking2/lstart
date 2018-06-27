@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#jam run stringlog.jxe --cloud --app=q5 --bg
+
+cd ~/JAMSamples/richboy/parking2/visualizing/
+jam run visualizer.jxe --fog --app=visualizing --bg
+
+cd ~/JAMSamples/richboy/parking2/allocating/
+jam run allocator.jxe --fog --app=allocating --bg
+
+cd ~/JAMSamples/richboy/parking2/sensing/
+jam run sensor.jxe --fog --app=sensing --bg
+
+#launch for the parking spots
+COUNTER=0
+while IFS='' read -r line || [[ -n "$line" ]]; do
+	let COUNTER=COUNTER+1
+	if [ "$COUNTER" = "1" ]; then
+		continue
+	fi
+
+	lotID=$(echo $line | cut -f 1 -d '@')
+	num=$(echo $line | cut -f 3 -d '@')
+
+	for i in `seq 1 $num`; do
+		jam run sensor.jxe --app=sensing --tags=$lotID\_$i --bg
+	done
+	break
+done < "lots_translated.txt"
+
+
+cd ~/JAMSamples/richboy/parking2/car/
+jam run car.jxe --fog --app=car --bg
+
+files=$(ls taxi_data)
+COUNT=0
+for file in $files; do
+    let COUNT=COUNT+1
+	jam run car.jxe --app=car --tags=$file --bg
+	if [ "$COUNT" = "5" ]; then
+	    break
+	fi
+done
