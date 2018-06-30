@@ -2,11 +2,11 @@ class Event{
     constructor(id, timeDelta, longitude, latitude, speed, northAngle, status, index){
         this.id = id;
         this.time = timeDelta;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.speed = speed;
-        this.northAngle = northAngle;
-        this.status = status;
+        this.longitude = parseFloat(longitude);
+        this.latitude = parseFloat(latitude);
+        this.speed = parseInt(speed);
+        this.northAngle = parseInt(northAngle);
+        this.status = parseInt(status);
         this.index = index;
     }
 }
@@ -37,7 +37,7 @@ class Simulation{
                 t = Simulation.getTimeDifference(lastTime, parts[1]);
             lastTime = parts[1];
             this.events.push(new Event(
-                parts[0], t, parts[2], parts[3], parts[4], parts[5], parts[6], index
+                parts[0], t, parts[2], parts[3], parts[4].trim(), parts[5].trim(), parts[6].trim(), index
             ));
         }.bind(this));
 
@@ -125,6 +125,16 @@ class Simulation{
         console.log("beginning new event...");
         this.CarActions.changeLocation(event.longitude, event.latitude);
 
+        //send event to visualizer
+        this.CarActions.emitEvent({
+            carID: this.CarActions.getCarID(),
+            latitude: event.latitude,
+            longitude: event.longitude,
+            status: event.status,
+            speed: event.speed,
+            northAngle: event.northAngle
+        });
+
         if( event.status == 2 ){//request parking
             let data = {
                 messageType: 1, //request
@@ -170,7 +180,7 @@ class Simulation{
     }
 
     _endSimulation(){
-        console.log("Simulation eneded!!!");
+        console.log("Simulation ended!!!");
     }
 
     saveParking(parking){

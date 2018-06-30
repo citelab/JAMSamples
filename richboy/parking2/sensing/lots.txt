@@ -1,4 +1,5 @@
-lot_id@address@number_of_spots@facility_name@facility_type@weekday_allowed_time@saturday_allowed_time@sunday_allowed_time@rate_1hr@rate_2hr@rate_3hr@rate_allday@disabled_spot_count@latitude@longitude1@1801 6TH AV, SEATTLE, WA   98101@30@Vance BOA - Lot #60@SURFACE LOT@24 hours@24 hours@24 hours@9.0@18.0@-1.0@24.0@1@47.61319434300003@-122.33695130099994@
+lot_id@address@number_of_spots@facility_name@facility_type@weekday_allowed_time@saturday_allowed_time@sunday_allowed_time@rate_1hr@rate_2hr@rate_3hr@rate_allday@disabled_spot_count@latitude@longitude
+1@1801 6TH AV, SEATTLE, WA   98101@30@Vance BOA - Lot #60@SURFACE LOT@24 hours@24 hours@24 hours@9.0@18.0@-1.0@24.0@1@47.61319434300003@-122.33695130099994@
 2@2120 5TH AV, SEATTLE, WA   98121@28@2120 5th Avenue - Lot #13@SURFACE LOT@24 hours@24 hours@24 hours@5.0@5.0@-1.0@17.0@0@47.61512788600004@-122.34098296499997@
 3@600 STEWART ST, SEATTLE, WA   98101@100@Plaza 600 - Lot #33@GARAGE@24 hours@24 hours@24 hours@10.0@14.0@14.0@32.0@0@47.61390705900004@-122.33725304699999@
 4@1109 WESTERN AV, SEATTLE, WA 98101@194@Waterfront Place - Lot 103@GARAGE@@@@6.0@-1.0@-1.0@-1.0@0@47.604487136000046@-122.33803121799997@

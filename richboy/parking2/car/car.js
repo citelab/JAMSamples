@@ -22,6 +22,19 @@ jdata{
 
     carRequestOut as outflow of request;
     allocCarAssignIn as inflow; //of app://allocating.allocResponseOut;  //inflow from the allocation app reporting slot information
+
+    struct activity{
+        float latitude;
+        float longitude;
+        char* status;
+        char* carID;
+        float northAngle;
+        float speed;
+        char* key;
+    }activity as logger;
+
+    carEventOut as outflow of activity;
+
     struct resp{
         int messageType;    //1=found a slot, 2=no slot found
         char* label;        //The label of the assigned spot
@@ -42,6 +55,7 @@ jdata{
 
 allocCarAssignIn.openFlow("allocResponseOut");
 carRequestOut.setName("carRequestOut");
+carEventOut.setName("carEventOut");
 
 var simSpeed = 100; //the simulation speed
 var currentSpot, tempSpot;
@@ -86,6 +100,9 @@ var CarActions = (function(){
         },
         getCarID: function(){
             return carID;
+        },
+        emitEvent: function(data){
+            activity.getMyDataStream().log(Object.assign(data, {key: activity.getMyDataStream().getDeviceId()}));
         }
     };
 })();
@@ -192,12 +209,15 @@ if( JAMManager.isDevice ){
 
                     if( pos == 0 ) {  //accept
                         CarActions.accept(data);
+                        simulation.saveParking(tempSpot);
                     }
                     else{//reject
                         data.messageType = 3;   //reject
 
                         CarActions.reject(data);
                     }
+
+                    tempSpot = null;
                 }, 3000 / simSpeed);
             }
         }
@@ -205,8 +225,11 @@ if( JAMManager.isDevice ){
 }
 
 //setTimeout(launch, 2000);    //begin running code at the device level
-if( JAMManager.isFog )
+if( JAMManager.isFog ) {
     carRequestOut.setExtractDataTransformer().start();  //start the outflow to listen and send data out to allocator
+    //start the outflow to the visualizer
+    carEventOut.setExtractDataTransformer().start();
+}
 
 
 //no need to use jcond to make this function run only at the fog level because no sharing will be done by the

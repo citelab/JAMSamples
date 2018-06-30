@@ -66,7 +66,7 @@ void buildProps(){
     while ((read = getline(&line, &len, fp)) != -1) {
         id++;
 
-        if( id == lot_id ){ //no need to skip the header line cause the id starts at 2
+        if( id == lot_id + 1 ){ //to account for the header
             //split line and get parts
             char* p = strtok(line, "@");
             p = strtok (NULL, "@");

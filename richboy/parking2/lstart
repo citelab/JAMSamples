@@ -1,11 +1,13 @@
 #!/bin/bash
 
-#jam run stringlog.jxe --cloud --app=q5 --bg
+#&>/dev/null &
 
 cd ~/JAMSamples/richboy/parking2/visualizing/
+#jam run visualizer.jxe --cloud --app=visualizing --bg
 jam run visualizer.jxe --fog --app=visualizing --bg
 
 cd ~/JAMSamples/richboy/parking2/allocating/
+#jam run allocator.jxe --cloud --app=allocating --bg
 jam run allocator.jxe --fog --app=allocating --bg
 
 cd ~/JAMSamples/richboy/parking2/sensing/
