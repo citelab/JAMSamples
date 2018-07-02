@@ -11,13 +11,7 @@ char jdata_buffer[20];
 char app_id[64] = { 0 };
 char dev_tag[32] = { 0 };
 int ndevices;
-void pingMe() {
-jact = jam_create_activity(js);
-jact = jam_rexec_async(js, jact, "jcond.get('fogonly').source", 2, "pingMe", "");
-activity_free(jact);
-}
-
-int user_main() {
+void execlogdata(){
 char *names[10] = {"david", "mayer", "justin", "richard", "lekan", "ben", "owen", "nicholas", "karu", "clark"};
 int i;
 char buf[32];
@@ -25,12 +19,23 @@ for (i = 0; i < 1000; i++) {
 sprintf(buf, "%d-%s", i, names[i % 10]);
 jamdata_log_to_server("global", "name", buf, 0);
 printf("Wrote .. name: %s\n", buf);
-sleep(1);
-pingMe();
+jsleep(1000);
 }
+}
+void logdata() {
+jam_lexec_async(js, "logdata");
+}
+void calllogdata(void *act, void *arg) {
+command_t *cmd = (command_t *)arg;
+execlogdata();
+}
+
+int user_main() {
+logdata();
 }
 
 void user_setup() {
+activity_regcallback(js->atable, "logdata", ASYNC, "", calllogdata);
 }
 
 void jam_run_app(void *arg) {
