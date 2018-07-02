@@ -184,11 +184,11 @@ if( JAMManager.isDevice ){
                 simulation.saveParking(currentSpot);
             }
             else{//this is not our preferred location
-                //save the temporary spot in case the user accepts it
-                tempSpot = message;
                 //send to visualizer to process
                 //clientSocket.emit("response", message);
                 setTimeout(function(){
+                    //save the temporary spot in case the user accepts it
+                    tempSpot = message;
                     //for now randomly accept
                     //TODO check distance between current location and cost
                     var pos = Math.floor(Math.random() * 2);
@@ -239,7 +239,7 @@ allocCarAssignIn.setTerminalFunction(function(data){
         console.log("allocCarAssignIn input data in car.js is string");
         data = JSON.parse(data);
     }
-    //TODO data received, use J->J to send the data to the level below
+    console.log(data);
     //For now let us use broadcaster to push the data down
     resp.broadcast(data);   //data should have the structure in the resp struct
 });

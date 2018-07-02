@@ -137,7 +137,7 @@ if( JAMManager.isFog ) {
             console.log("sensingIn input data in allocator.js is string");
             data = JSON.parse(data);
         }
-        console.log(data.key);
+        //console.log(data.key);
 
         //check that this message has a valid key else skip it.
         if (data.key === "null") {
@@ -150,6 +150,10 @@ if( JAMManager.isFog ) {
 
         if (!datastream) {   //this stream doesn't yet exist so create a new one
             datastream = spots.addDatastream(data.key);
+            datastream.setTransformer(input => {
+                input[jsys.type] = JAMManager.deviceID;
+                return input;
+            });
             deviceMap[data.key] = datastream;
             deviceMap[data.lotID + "_" + data.spotID] = datastream;    //save this reference as well as that of the key's
             new OutFlow(Flow.from(datastream)).setName("allocatingOut").setTransformer(input => {
@@ -161,7 +165,7 @@ if( JAMManager.isFog ) {
 
         //log the data on this stream
         datastream.log(data);   //let it propagate to the cloud
-        freeSpots.rootFlow.push(data);
+        freeSpots.push(data);
     });
 
     //implement logic to request allocation from the cloud when no spot is found and receive broadcast of cloud responses
@@ -257,7 +261,7 @@ if( JAMManager.isFog ) {
                         log.occupancyCar = data.occupancyCar;
                         console.log(log);
                         datastream.log(log);
-                        freeSpots.rootFlow.push(log);
+                        freeSpots.push(log);
                         //share this on the channel that sensing is listening on
                         alloc.getMyDataStream().log({
                             occupancyStatus: "occupied",
@@ -295,7 +299,7 @@ if( JAMManager.isFog ) {
                         log.occupancyStatus = "occupied";
                         log.occupancyCar = data.occupancyCar;
                         datastream.log(log);
-                        freeSpots.rootFlow.push(log);
+                        freeSpots.push(log);
                         //share this on the channel that sensing is listening on
                         alloc.getMyDataStream().log({
                             occupancyStatus: "occupied",
@@ -344,7 +348,7 @@ if( JAMManager.isFog ) {
                         log.occupancyStatus = "free";
                         log.occupancyCar = "";
                         datastream.log(log);
-                        freeSpots.rootFlow.push(log);
+                        freeSpots.push(log);
                         //share this on the channel that sensing is listening on
                         alloc.getMyDataStream().log({
                             occupancyStatus: "free",
@@ -382,7 +386,7 @@ if( JAMManager.isFog ) {
                         log.occupancyStatus = "free";
                         log.occupancyCar = "";
                         datastream.log(log);
-                        freeSpots.rootFlow.push(log);
+                        freeSpots.push(log);
                         //share this on the channel that sensing is listening on
                         alloc.getMyDataStream().log({
                             occupancyStatus: "free",
@@ -449,7 +453,7 @@ if( JAMManager.isFog ) {
                         log.occupancyCar = data.occupancyCar;
                         console.log(log);
                         datastream.log(log);
-                        freeSpots.rootFlow.push(log);
+                        freeSpots.push(log);
                         //share this on the channel that sensing is listening on
                         alloc.getMyDataStream().log({
                             occupancyStatus: "occupied",
@@ -491,12 +495,14 @@ if( JAMManager.isFog ) {
                     });
 
                     var datastream = deviceMap[spot.lotID + "_" + spot.spotID];    //find the datastream
+                    if( !datastream )
+                        console.log("Datastream is null: ", spot.lotID, spot.spotID);
                     //log the changes so it can also be shared on the outflow channel
                     datastream.getLastValueSync().then(log => {
                         log.occupancyStatus = "onhold";
                         log.occupancyCar = data.occupancyCar;
                         datastream.log(log);
-                        freeSpots.rootFlow.push(log);
+                        freeSpots.push(log);
                         //share this on the channel that sensing is listening on
                         alloc.getMyDataStream().log({
                             occupancyStatus: "onhold",
@@ -539,7 +545,7 @@ if( JAMManager.isFog ) {
                 log.occupancyStatus = data.occupancyStatus;
                 log.occupancyCar = data.occupancyCar;
                 datastream.log(log);
-                freeSpots.rootFlow.push(log);
+                freeSpots.push(log);
                 //share this on the channel that sensing is listening on
                 alloc.getMyDataStream().log({
                     occupancyStatus:  data.occupancyStatus,
@@ -663,7 +669,7 @@ else if( JAMManager.isCloud ){
                         //send directly to the push method of visualizer outflow
                         cloudShare.push(log);
                         //instantly update the running reduce
-                        freeSpots.rootFlow.push(log);
+                        freeSpots.push(log);
                     });
 
                     return;
@@ -716,7 +722,7 @@ else if( JAMManager.isCloud ){
                 //send directly to the push method of visualizer outflow
                 cloudShare.push(log);
                 //instantly update the running reduce
-                freeSpots.rootFlow.push(log);
+                freeSpots.push(log);
             });
 
         }

@@ -5,16 +5,18 @@
 #include <stdio.h>
 
 int isFogRunning();
+int getSpotID();
 //char* getLabel(int);
 //char* getPostcode(int);
 //char* getAddress(int);
 char* getStreamKey(int);
 
-char* label;
+char label[50];
 char* status = "free";
 char* postcode;
 char* address;
 char* key; //would be obtained using C->J
+int total_spots;    //as obtained from the dev_tag
 
 const int PARKING_DURATION = 60;//60 minutes
 
@@ -100,9 +102,7 @@ void buildProps(){
             occupancy_car = "";
             is_for_disabled = 0;
 
-            char pack[50];
-            snprintf(pack,sizeof(pack),"Lot %d - Spot %d", lot_id, spot_id);
-            label = &pack[0];
+            snprintf(label,sizeof(label),"Lot %d - Spot %d", lot_id, spot_id);
 
             break;
         }
@@ -113,7 +113,7 @@ void buildProps(){
         free(line);
 }
 
-int main(){//int argc, char **argv
+int main(int argc, char **argv){//int argc, char **argv
     printf("C is running...\n");
     srand(time(NULL));
 
@@ -122,7 +122,15 @@ int main(){//int argc, char **argv
     char* p = strtok(dev_tag, "_");
     lot_id = atoi(p);
     p = strtok(NULL, "_");
-    spot_id = atoi(p);
+    total_spots = atoi(p);
+
+    //get spotID from JS side
+    spot_id = getSpotID();
+    while(jam_error != 0){
+        usleep(2000);
+        spot_id = getSpotID();
+        printf("spotID received is: %d \n", spot_id);
+    }
 
     //read file and get spot properties
     buildProps();

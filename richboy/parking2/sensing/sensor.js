@@ -2,6 +2,8 @@
  * Created by Richboy on 30/06/17.
  */
 
+var id = 1;
+
 jdata{
     struct spot{
         char* label;           //parking label
@@ -46,17 +48,7 @@ jdata{
 sensingOut.setName("sensingOut");
 allocSensorIn.openFlow("allocSenseOut");
 
-// //Since we are having a lil issue with getting the device JNode to send back data using C->J, lets transform
-// //the data before it is sent to the fog and onwards
-// if( jsys.type == "device" ){
-//     spot.setTransformer((input, datastream) => {
-//         input.key = datastream.getDeviceId();
-//         input.postcode = postcodes[input.assignedID - 1];
-//         input.label = labels[input.assignedID - 1];
-//         input.address = addresses[0];
-//         return input;
-//     });
-// }
+
 
 jcond{
     isFog: jsys.type == "fog";
@@ -74,6 +66,10 @@ function spotFlowFunc(inputFlow){
     return inputFlow;
 }
 
+jsync {isDevice} function getSpotID() {
+    var spotID = id++;
+    return spotID;
+}
 
 jsync {isDevice} function getStreamKey(spotID) {//
     console.log("SpotID is ", spotID);

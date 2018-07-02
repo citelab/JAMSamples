@@ -90,8 +90,24 @@ socket.on('connection', function(client){
         }
     });
 });
+
+server.on('listening', (e) => {
+    console.log("VISUAL-" + JAMManager.getLevelCode().toUpperCase() + ":", server.address().port);
+});
+
+server.on('error', (e) => {
+    if (e.code == 'EADDRINUSE') {
+        console.log('Address in use, retrying...');
+        setTimeout(() => {
+            server.close();
+            server.listen(0);   //Let the system assign a port
+        }, 100);
+    }
+});
+
 //JAMManager.port
-var port = jsys.getMQTT().port - 0 + 1;
+var port = jsys.getRedis() || jsys.getMQTT();   //try with Redis and then use MQTT if it fails
+port = port.port - 0 + 1;
 server.listen(port);    //get the data depot port and add one to it
 
 express.get("/", (req, res) => res.sendFile(__dirname + "/visualizer.html"));
@@ -106,7 +122,7 @@ allocIn.setTerminalFunction(function(data){
             console.log("allocIn input data in visualizer.js is string");
             data = JSON.parse(data);
         }
-        console.log(data.key);
+        //console.log(data.key);
 
         //check that this message has a valid key else skip it.
         if (data.key === "null") {
@@ -133,7 +149,7 @@ carEventIn.setTerminalFunction(function(data){
             console.log("carEventIn input data in visualizer.js is string");
             data = JSON.parse(data);
         }
-        console.log(data.key);
+        //console.log(data.key);
 
         //check that this message has a valid key else skip it.
         if (data.key === "null") {

@@ -1,0 +1,47 @@
+djam init --zones=1 --indelay=3:1 --outdelay=5:3 --cldelay=30:5
+
+cd ~/JAMSamples/richboy/parking2/visualizing/
+djam run visualizer.jxe --cloud --app=visualizing --bg --log
+#TODO run this fog a number of times with location information
+djam run visualizer.jxe --fog --app=visualizing --bg --log
+
+cd ~/JAMSamples/richboy/parking2/allocating/
+djam exec --type=cloud --app=visualizing --program=visualizer --xapp=allocating --bg --log allocator.jxe
+#TODO run this fog a number of times with location information
+djam exec --type=fog --app=visualizing --program=visualizer --xapp=allocating --bg --log allocator.jxe
+
+cd ~/JAMSamples/richboy/parking2/sensing/
+#TODO run this fog a number of times with location information
+djam exec --type=fog --app=visualizing --program=visualizer --xapp=sensing --bg --log sensor.jxe
+
+#launch for the parking spots
+COUNTER=0
+while IFS='' read -r line || [[ -n "$line" ]]; do
+	let COUNTER=COUNTER+1
+	if [ "$COUNTER" = "1" ]; then
+		continue
+	fi
+
+	lotID=$(echo $line | cut -f 1 -d '@')
+	num=$(echo $line | cut -f 3 -d '@')
+
+	#for i in `seq 1 $num`; do
+		djam run sensor.jxe --app=sensing --num=$num --tags=$lotID\_$num --bg --log
+	#done
+	break
+done < "lots_translated.txt"
+
+
+cd ~/JAMSamples/richboy/parking2/car/
+#TODO run this fog a number of times with location information
+djam exec --type=fog --app=visualizing --program=visualizer --xapp=car --bg --log car.jxe
+
+files=$(ls taxi_data)
+COUNT=0
+for file in $files; do
+    let COUNT=COUNT+1
+	djam run car.jxe --app=car --tags=$file --bg --log
+	#if [ "$COUNT" = "5" ]; then
+	#    break
+	#fi
+done

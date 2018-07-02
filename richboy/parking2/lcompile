@@ -2,7 +2,7 @@
 
 
 cd ~/JAMSamples/richboy/parking2/visualizing/
-jamc visualizer.c visualizer.js Box.js car.png socket.io.js style.css visualizer.html lots_translated.js
+jamc visualizer.c visualizer.js Box.js car.png access_point.png socket.io.js style.css visualizer.html lots_translated.js
 
 cd ~/JAMSamples/richboy/parking2/allocating/
 jamc allocator.c allocator.js
