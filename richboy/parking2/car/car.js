@@ -247,13 +247,16 @@ allocCarAssignIn.setTerminalFunction(function(data){
 
 //start simulation
 if( JAMManager.isDevice ){
-    //read file and build simulation
-    var fileFlow;
-    if( fs.existsSync('./taxi_data/') )
-        fileFlow = Flow.fromFile('./taxi_data/' + file);
-    else
-        fileFlow = Flow.fromFile('/data/' + file);
+    //wait 5 seconds for the sensors and all to start
+    setTimeout(function(){
+        //read file and build simulation
+        var fileFlow;
+        if( fs.existsSync('./taxi_data/') )
+            fileFlow = Flow.fromFile('./taxi_data/' + file);
+        else
+            fileFlow = Flow.fromFile('/data/' + file);
 
-    simulation = new Simulation(fileFlow, simSpeed, 20, CarActions);
-    simulation.start();
+        simulation = new Simulation(fileFlow, simSpeed, 20, CarActions);
+        simulation.start();
+    }, 5000);
 }

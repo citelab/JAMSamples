@@ -141,7 +141,7 @@ if( JAMManager.isFog ) {
 
         //check that this message has a valid key else skip it.
         if (data.key === "null") {
-            console.log("RETURNING...key is null");
+            //console.log("RETURNING...key is null");
             return;
         }
 
@@ -229,6 +229,8 @@ if( JAMManager.isFog ) {
                             newData.distance = calculateDistance(spot.latitude, spot.longitude, data.park_latitude, data.park_longitude);
                             object.best = spot;
                         }
+                        else
+                            console.log("Could not find any spot at all");
                     }
                     //save request from car till we get back info from the cloud
                     pendingRequests[data.occupancyCar] = object;
@@ -495,8 +497,10 @@ if( JAMManager.isFog ) {
                     });
 
                     var datastream = deviceMap[spot.lotID + "_" + spot.spotID];    //find the datastream
-                    if( !datastream )
+                    if( !datastream ) {
                         console.log("Datastream is null: ", spot.lotID, spot.spotID);
+                        console.log(spot);
+                    }
                     //log the changes so it can also be shared on the outflow channel
                     datastream.getLastValueSync().then(log => {
                         log.occupancyStatus = "onhold";

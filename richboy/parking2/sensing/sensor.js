@@ -110,7 +110,7 @@ function addBroadcastHook(){
     });
 }
 
-//spot.findAllStreams();  //get all the streams from Redis which may not yet be loaded in memory
+spot.findAllStreams();  //get all the streams from Redis which may not yet be loaded in memory
 
 // //subscribe to when parent comes online and then push the last data from all the streams, but only one that is not null
 // var subObj = {

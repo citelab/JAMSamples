@@ -8,13 +8,18 @@ djam run visualizer.jxe --cloud --app=visualizing --bg --log
 CNT=0
 for location in $locations; do
     let CNT=CNT+1
+
     longitude=$(cut -f 1 -d ',' <<< "$location")
     latitude=$(cut -f 2 -d ',' <<< "$location")
 
     djam run visualizer.jxe --fog --app=visualizing --loc=$longitude,$latitude --bg --log
+
+    if [ "$CNT" = "5" ]; then
+        break
+    fi
 done
 
-//sleep for 10 seconds to wait for the applications to start
+#sleep for 10 seconds to wait for the applications to start
 sleep 3
 
 cd ~/JAMSamples/richboy/parking2/allocating/
@@ -38,9 +43,11 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     lat=$(echo $line | cut -f 14 -d '@')
     lon=$(echo $line | cut -f 15 -d '@')
 
-	#for i in `seq 1 $num`; do
-		djam run sensor.jxe --app=sensing --num=$num --tags=$lotID\_$num --loc=$lon,$lat --link=near --bg --log
-	#done
+	djam run sensor.jxe --app=sensing --num=$num --tags=$lotID\_$num --loc=$lon,$lat --link=near --bg --log
+
+	if [ "$COUNTER" = "11" ]; then
+        break
+    fi
 done < "lots_translated.txt"
 
 
@@ -53,10 +60,11 @@ COUNT=0
 for file in $files; do
     let COUNT=COUNT+1
 
-    loc=$(head -1 taxi_data/$file | cut -f 2.3 -d ',')
+    loc=$(head -1 taxi_data/$file | cut -f 3,4 -d ',')
 
 	djam run car.jxe --app=car --tags=$file --loc=$loc --link=near --bg --log --mount
-	#if [ "$COUNT" = "5" ]; then
-	#    break
-	#fi
+
+	if [ "$COUNT" = "20" ]; then
+	    break
+	fi
 done

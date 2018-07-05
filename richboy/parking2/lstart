@@ -15,7 +15,7 @@ for location in $locations; do
     latitude=$(cut -f 2 -d ',' <<< "$location")
 
     jam run visualizer.jxe --fog --app=visualizing --data=127.0.0.1:7379 --loc=$longitude,$latitude --bg --log
-    if [ "$CNT = "3" ]; then
+    if [ "$CNT" = "3" ]; then
         break
     fi
 done
@@ -30,7 +30,7 @@ for location in $locations; do
     latitude=$(cut -f 2 -d ',' <<< "$location")
 
     jam run allocator.jxe --fog --app=allocating --data=127.0.0.1:7379 --loc=$longitude,$latitude --bg --log
-    if [ "$CNT = "3" ]; then
+    if [ "$CNT" = "3" ]; then
         break
     fi
 done
@@ -43,8 +43,8 @@ for location in $locations; do
     longitude=$(cut -f 1 -d ',' <<< "$location")
     latitude=$(cut -f 2 -d ',' <<< "$location")
 
-    jam run sensor.jxe --fog --app=sensing --data=127.0.0.1:7379 --bg --log --loc=$longitude,$latitude
-    if [ "$CNT = "3" ]; then
+    jam run sensor.jxe --fog --app=sensing --data=127.0.0.1:7379 --loc=$longitude,$latitude --bg --log
+    if [ "$CNT" = "3" ]; then
         break
     fi
 done
@@ -57,20 +57,17 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 		continue
 	fi
 
-	#REMOVE THIS
-	if [ "$COUNTER" = "3" ]; then
-        break
-    fi
-
 	lotID=$(echo $line | cut -f 1 -d '@')
 	num=$(echo $line | cut -f 3 -d '@')
 	lat=$(echo $line | cut -f 14 -d '@')
 	lon=$(echo $line | cut -f 15 -d '@')
 
-	#for i in `seq 1 $num`; do
-		jam run sensor.jxe --app=sensing --num=$num --tags=$lotID\_$num --bg --log --loc=$lon,$lat --link=near
-	#done
-	break
+	jam run sensor.jxe --app=sensing --num=$num --tags=$lotID\_$num --loc=$lon,$lat --link=near --bg --log
+
+	#REMOVE THIS
+    if [ "$COUNTER" = "4" ]; then
+        break
+    fi
 done < "lots_translated.txt"
 
 
@@ -83,7 +80,7 @@ for location in $locations; do
     latitude=$(cut -f 2 -d ',' <<< "$location")
 
     jam run car.jxe --fog --app=car --data=127.0.0.1:7379 --bg --log --loc=$longitude,$latitude
-    if [ "$CNT = "3" ]; then
+    if [ "$CNT" = "3" ]; then
         break
     fi
 done
@@ -93,9 +90,9 @@ COUNT=0
 for file in $files; do
     let COUNT=COUNT+1
 
-    loc=$(head -1 taxi_data/$file | cut -f 2.3 -d ',')
+    loc=$(head -1 taxi_data/$file | cut -f 3,4 -d ',')
 
-	jam run car.jxe --app=car --tags=$file --bg --log --link=near --loc=$loc
+	jam run car.jxe --app=car --tags=$file --link=near --loc=$loc --bg --log
 	if [ "$COUNT" = "5" ]; then
 	    break
 	fi

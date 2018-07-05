@@ -129,8 +129,8 @@ int main(int argc, char **argv){//int argc, char **argv
     while(jam_error != 0){
         usleep(2000);
         spot_id = getSpotID();
-        printf("spotID received is: %d \n", spot_id);
     }
+    printf("spotID received is: %d \n", spot_id);
 
     //read file and get spot properties
     buildProps();
