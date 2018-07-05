@@ -15,14 +15,31 @@ for location in $locations; do
 done
 
 //sleep for 10 seconds to wait for the applications to start
-sleep 3
+sleep 10
 
 cd ~/JAMSamples/richboy/parking2/allocating/
-djam exec --type=cloud --app=visualizing --program=visualizer --xapp=allocating allocator.jxe
+djam run allocator.jxe --cloud --app=allocating --bg --log --runon=
+CNT=0
+for location in $locations; do
+    let CNT=CNT+1
+    longitude=$(cut -f 1 -d ',' <<< "$location")
+    latitude=$(cut -f 2 -d ',' <<< "$location")
+
+    #djam run allocator.jxe --fog --app=allocating --loc=$longitude,$latitude --bg --log --runon=
+
+done
 djam exec --type=fog --app=visualizing --program=visualizer --xapp=allocating allocator.jxe
 
 
 cd ~/JAMSamples/richboy/parking2/sensing/
+CNT=0
+for location in $locations; do
+    let CNT=CNT+1
+    longitude=$(cut -f 1 -d ',' <<< "$location")
+    latitude=$(cut -f 2 -d ',' <<< "$location")
+
+    #djam run sensor.jxe --fog --app=sensing --loc=$longitude,$latitude --bg --log --runon=
+done
 djam exec --type=fog --app=visualizing --program=visualizer --xapp=sensing sensor.jxe
 
 #launch for the parking spots
@@ -35,27 +52,30 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 
 	lotID=$(echo $line | cut -f 1 -d '@')
 	num=$(echo $line | cut -f 3 -d '@')
-    lat=$(echo $line | cut -f 14 -d '@')
-    lon=$(echo $line | cut -f 15 -d '@')
 
 	#for i in `seq 1 $num`; do
-		djam run sensor.jxe --app=sensing --num=$num --tags=$lotID\_$num --loc=$lon,$lat --link=near --bg --log
+		djam run sensor.jxe --app=sensing --num=$num --tags=$lotID\_$num --bg --log
 	#done
+	break
 done < "lots_translated.txt"
 
 
 cd ~/JAMSamples/richboy/parking2/car/
+CNT=0
+for location in $locations; do
+    let CNT=CNT+1
+    longitude=$(cut -f 1 -d ',' <<< "$location")
+    latitude=$(cut -f 2 -d ',' <<< "$location")
+
+    #djam run car.jxe --fog --app=car --loc=$longitude,$latitude --bg --log --runon=
+done
 djam exec --type=fog --app=visualizing --program=visualizer --xapp=car car.jxe
 
 files=$(ls taxi_data)
-JAMDATA=~/JAMSamples/richboy/parking2/car/taxi_data
 COUNT=0
 for file in $files; do
     let COUNT=COUNT+1
-
-    loc=$(head -1 taxi_data/$file | cut -f 2.3 -d ',')
-
-	djam run car.jxe --app=car --tags=$file --loc=$loc --link=near --bg --log --mount
+	djam run car.jxe --app=car --tags=$file --bg --log
 	#if [ "$COUNT" = "5" ]; then
 	#    break
 	#fi

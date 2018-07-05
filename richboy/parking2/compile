@@ -1,0 +1,12 @@
+cd ~/JAMSamples/richboy/parking2/visualizing/
+djamcompile visualizer.c visualizer.js Box.js car.png access_point.png socket.io.js style.css visualizer.html lots_translated.js
+
+cd ~/JAMSamples/richboy/parking2/allocating/
+djamcompile allocator.c allocator.js
+
+cd ~/JAMSamples/richboy/parking2/sensing/
+djamcompile sensor.c sensor.js lots.txt lots_translated.txt
+
+cd ~/JAMSamples/richboy/parking2/car/
+djamcompile car.c car.js loading.gif sim.js socket.io.js car.html
+#taxi_data

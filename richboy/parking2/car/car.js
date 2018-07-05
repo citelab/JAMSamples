@@ -62,6 +62,7 @@ var currentSpot, tempSpot;
 var file = jsys.tags;   //This is the file that will be read from which the car will get it's simulation details
 
 var Simulation = require('./sim');
+var fs = require('fs');
 
 
 jcond{
@@ -247,7 +248,11 @@ allocCarAssignIn.setTerminalFunction(function(data){
 //start simulation
 if( JAMManager.isDevice ){
     //read file and build simulation
-    var fileFlow = Flow.fromFile('./taxi_data/' + file);
+    var fileFlow;
+    if( fs.existsSync('./taxi_data/') )
+        fileFlow = Flow.fromFile('./taxi_data/' + file);
+    else
+        fileFlow = Flow.fromFile('/data/' + file);
 
     simulation = new Simulation(fileFlow, simSpeed, 20, CarActions);
     simulation.start();
