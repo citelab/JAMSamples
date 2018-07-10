@@ -1,0 +1,29 @@
+
+jamrun topo.jxe --app=xx56 --cloud --bg --log --data=127.0.0.1:9000
+
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=121.8,31.8  --data=127.0.0.1:7001
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=121.8,31.3  --data=127.0.0.1:7002
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=121.8,30.8  --data=127.0.0.1:7003
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=121.8,30.5  --data=127.0.0.1:7004
+
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=121.3,31.8  --data=127.0.0.1:7005
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=121.3,31.3  --data=127.0.0.1:7006
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=121.3,30.8  --data=127.0.0.1:7007
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=121.3,30.5  --data=127.0.0.1:7008
+
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=120.8,31.8  --data=127.0.0.1:7009
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=120.8,31.3  --data=127.0.0.1:7010
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=120.8,30.8  --data=127.0.0.1:7011
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=120.8,30.5  --data=127.0.0.1:7012
+
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=120.5,31.8  --data=127.0.0.1:7013
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=120.5,31.3  --data=127.0.0.1:7014
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=120.5,30.8 --data=127.0.0.1:7015
+jamrun topo.jxe --app=xx56 --fog --bg --log --loc=120.5,30.5  --data=127.0.0.1:7016
+
+#djamrun topo.jxe --app=xx56 --bg  --log --link=near
+
+#for i in `seq 1 30`; do
+#    djamrun topo.jxe --app=xx56 --bg  --log --link=near
+#done
+

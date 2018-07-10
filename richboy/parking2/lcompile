@@ -1,15 +1,23 @@
 #!/bin/bash
 
 
-cd ~/JAMSamples/richboy/parking2/visualizing/
+cd visualizing/
 jamc visualizer.c visualizer.js Box.js car.png access_point.png socket.io.js style.css visualizer.html lots_translated.js fog_locations.js
 
-cd ~/JAMSamples/richboy/parking2/allocating/
+cd ..
+
+cd allocating/
 jamc allocator.c allocator.js
 
-cd ~/JAMSamples/richboy/parking2/sensing/
+cd ..
+
+cd sensing/
 jamc sensor.c sensor.js lots.txt lots_translated.txt
 
-cd ~/JAMSamples/richboy/parking2/car/
+cd ..
+
+cd car/
 jamc car.c car.js loading.gif sim.js socket.io.js car.html
+
+cd ..
 #taxi_data

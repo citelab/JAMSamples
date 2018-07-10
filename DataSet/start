@@ -1,0 +1,13 @@
+jamrun topo.jxe --app=xx56 --cloud --data=127.0.0.1:8050 --bg --log
+
+for i in `seq 1 9`; do
+    jamrun topo.jxe --app=xx56 --fog --bg --data=127.0.0.1:700$i --log
+done
+
+for i in `seq 1 9`; do
+    jamrun topo.jxe --app=xx56 --bg  --data=127.0.0.1:600$i --log
+done
+
+for i in `seq 10 40`; do
+    jamrun topo.jxe --app=xx56 --bg  --data=127.0.0.1:60$i --log
+done

@@ -1,0 +1,21 @@
+djam init ideal
+
+djamrun topo.jxe --app=xx57 --cloud --bg --log
+
+djamrun topo.jxe --app=xx57 --fog --bg --log --loc=121.35,31.2
+djamrun topo.jxe --app=xx57 --fog --bg --log --loc=121.35,31.3
+djamrun topo.jxe --app=xx57 --fog --bg --log --loc=121.35,31.4
+djamrun topo.jxe --app=xx57 --fog --bg --log --loc=121.45,31.2
+djamrun topo.jxe --app=xx57 --fog --bg --log --loc=121.45,31.3
+djamrun topo.jxe --app=xx57 --fog --bg --log --loc=121.45,31.4
+djamrun topo.jxe --app=xx57 --fog --bg --log --loc=121.50,31.2
+djamrun topo.jxe --app=xx57 --fog --bg --log --loc=121.50,31.3
+djamrun topo.jxe --app=xx57 --fog --bg --log --loc=121.55,31.4
+
+
+#djamrun topo.jxe --app=xx57 --bg  --log --link=near
+
+#for i in `seq 1 30`; do
+#    djamrun topo.jxe --app=xx56 --bg  --log --link=near
+#done
+
