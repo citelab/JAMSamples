@@ -9,20 +9,10 @@ jdata {
         float ylat;
     } fogparams as broadcaster;
 
-    struct foginfo {
-        int id;
-        char *serial;
-    } foginfo as logger;
-
     struct fogctrl {
         int id;
         char *serial;
     } fogctrl as broadcaster;
-
-    struct devinfo {
-        int id;
-        char *serial;
-    } devinfo as logger;
 
     struct devctrl {
         int id;
@@ -32,8 +22,8 @@ jdata {
 
 jcond {
     fogonly: jsys.type == "fog";
+    cloudonly: jsys.type == "cloud";
 }
-
 
 var fs = require('fs');
 var cp = require('child_process');
@@ -77,6 +67,10 @@ function getFogId() {
 }
 
 function getDevId() {
+
+    if (dir === undefined)
+        dir = fs.readdirSync('Taxi');
+
     var x = dir.shift();
     if (x !== undefined)
         return x.split("_")[1];
@@ -138,48 +132,29 @@ function processTrace(tdata) {
 }
 
 
+jasync {cloudonly} function pushIdDev(ser) {
 
-if (jsys.type == "cloud") {
+    if (devIds.get(ser) === undefined) {
+        devIds.set(ser, getDevId());
+    }
 
-    var dir = fs.readdirSync('Taxi');
+    var id = devIds.get(ser);
+    console.log("Broadcasting... id ", id);
+    devctrl.broadcast({id: id, serial: ser});
+}
 
-    setInterval(function() {
+jasync {cloudonly} function pushIdFog(ser) {
 
-        for (i = 0; i < foginfo.size(); i++) {
-            if (foginfo[i] !== undefined) {
-                var msg = foginfo[i].lastValue();
-                console.log("message ", msg);
+    if (fogIds.get(ser) === undefined) {
+        fogIds.set(ser, getFogId());
+    }
+    var id = fogIds.get(ser);
+    console.log("Broadcasting... id ", id);
+    fogctrl.broadcast({id: id, serial: ser});
+}
 
-                if (msg != null && msg.id < 0) {
-                    // Find an ID for the node
-                    if (fogIds.get(msg.serial) === undefined) {
-                        fogIds.set(msg.serial, getFogId());
-                    }
-                    var id = fogIds.get(msg.serial);
-                    console.log("Broadcasting... id ", id);
-                    fogctrl.broadcast({id: id, serial: msg.serial});
-                }
-            }
-        }
 
-        for (i = 0; i < devinfo.size(); i++) {
-            if (devinfo[i] !== undefined) {
-                var msg = devinfo[i].lastValue();
-                if (msg != null && msg.id < 0) {
-                    // Find an ID for the node
-                    if (devIds.get(msg.serial) === undefined) {
-                        devIds.set(msg.serial, getDevId());
-                    }
-                    var id = devIds.get(msg.serial);
-                    console.log("Broadcasting... id ", id);
-                    devctrl.broadcast({id: id, serial: msg.serial});
-                }
-            }
-        }
-
-    }, 2000);
-
-} else if (jsys.type == "fog") {
+if (jsys.type == "fog") {
 
     fogctrl.addHook(function(obj) {
         if (obj.message.serial == jsys.id) {
@@ -190,16 +165,9 @@ if (jsys.type == "cloud") {
 
     setInterval(function() {
 
+        if (myId < 0)
+            requestmyid(jsys.id);
 
-        if (myId < 0) {
-            console.log("Loggin......", myId);
-            myfinfo.log({id: myId, serial: jsys.id});
-            logCnt = 10;
-        } else {
-            logCnt--;
-            if (logCnt > 0)
-                myfinfo.log({id: myId, serial: jsys.id});
-        }
         fogparams.broadcast({id: myId, xlong: jsys.long, ylat: jsys.lat});
 
     }, 1000);
@@ -240,14 +208,8 @@ if (jsys.type == "cloud") {
 
     setInterval(function() {
 
-        if (myId < 0) {
-            mydinfo.log({id: myId, serial: jsys.id});
-            logCnt = 10;
-        } else {
-            logCnt--;
-            if (logCnt > 0)
-                mydinfo.log({id: myId, serial: jsys.id});
-        }
+        if (myId < 0)
+            requestmyid(jsys.id);
 
     }, 1000);
 
