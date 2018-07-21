@@ -36,8 +36,7 @@ var devIds = new Map();
 var fogCnt = 1;
 var dir;
 var logCnt = 0;
-var myfinfo = foginfo.getMyDataStream();
-var mydinfo = devinfo.getMyDataStream();
+
 
 var tdata;
 var iniDist;
@@ -166,7 +165,7 @@ if (jsys.type == "fog") {
     setInterval(function() {
 
         if (myId < 0)
-            requestmyid(jsys.id);
+            requestmyid(2, jsys.id);
 
         fogparams.broadcast({id: myId, xlong: jsys.long, ylat: jsys.lat});
 
@@ -209,7 +208,7 @@ if (jsys.type == "fog") {
     setInterval(function() {
 
         if (myId < 0)
-            requestmyid(jsys.id);
+            requestmyid(1, jsys.id);
 
     }, 1000);
 

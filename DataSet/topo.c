@@ -2,6 +2,19 @@ struct timespec tp;
 clockid_t clk_id = CLOCK_MONOTONIC;
 
 int fogtest();
+void pushIdDev(char *s);
+void pushIdFog(char *s);
+
+
+jasync requestmyid(int cf, char *ser)
+{
+    printf("Request my ID launched... \n");
+    if (cf == 1)
+        pushIdDev(ser);
+    else
+        pushIdFog(ser);
+}
+
 
 jasync testFogPerf(char *cinfo)
 {
