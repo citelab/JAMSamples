@@ -186,23 +186,17 @@ if (jsys.type == "fog") {
     });
 
     fogparams.addHook(function(obj) {
-        console.log(obj.message);
         var fid = parseInt(obj.message.id);
-        if (fid > 0 && myFog !== fid && coordSet == true) {
-            myFog = fid;
-            // Initialize the fog system..
-            iniDist = computeDistance(obj.message.xlong, obj.message.ylat);
-            setNodeDelay(5);
-        } else if (fid > 0 && myFog === fid) {
-            console.log(iniDist);
-            var dist = computeDistance(obj.message.xlong, obj.message.ylat);
-            console.log(jsys.long, jsys.lat);
-            console.log(dist);
-            var delay = 5 + Math.abs(iniDist - dist)/10;
-            console.log("Delay ", delay);
-            setNodeDelay(delay);
-        }
 
+        if (coordSet) {
+
+            if (myFog !== fid)
+                myFog = fid;
+
+            var dist = computeDistance(obj.message.xlong, obj.message.ylat);
+            setNodeDelay(dist/150);
+            console.log("At location: ", jsys.long, jsys.lat);
+        }
     });
 
     setInterval(function() {
