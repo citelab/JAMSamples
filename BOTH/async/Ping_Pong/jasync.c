@@ -1,6 +1,5 @@
 #include <stdio.h>
 int perank;
-int count = 0;
 
 jactivity_t *ping(int);
 
