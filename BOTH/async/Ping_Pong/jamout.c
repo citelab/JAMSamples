@@ -12,7 +12,6 @@ char app_id[64] = { 0 };
 char dev_tag[32] = { 0 };
 int ndevices;
 int perank;
-int count = 0;
 void ping(int penum) {
 jact = jam_create_activity(js);
 jact = jam_rexec_async(js, jact, "true", 0, "ping", "i",penum);
@@ -38,7 +37,7 @@ ping(perank);
 printf("Sent the ping... \n");
 }
 void pong() {
-jam_lexec_async("execpong");
+jam_lexec_async(js, "pong");
 }
 void callpong(void *act, void *arg) {
 command_t *cmd = (command_t *)arg;
