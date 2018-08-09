@@ -1,7 +1,7 @@
 #include <unistd.h>
 
 int perank;
-int count = 0;
+int counter = 0;
 
 jactivity_t *pingserver(int);
 
@@ -19,7 +19,7 @@ void regcallback(char *msg) {
 
   while(1) {
      usleep(1);
-     printf("Pinging %d, count %d\n", perank, count++);
+     printf("Pinging %d, count %d\n", perank, counter++);
      pingserver(perank);
   }
 }
