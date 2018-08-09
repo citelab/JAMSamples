@@ -1,4 +1,0 @@
-VERSION = 1.0
-DESCRIPTION = JAMScript executable file
-NAME = jc
-CREATE-TIME = 1522783707661

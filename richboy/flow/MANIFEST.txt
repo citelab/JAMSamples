@@ -1,4 +1,0 @@
-VERSION = 1.0
-DESCRIPTION = JAMScript executable file
-NAME = flow-simple
-CREATE-TIME = 1518562724238
