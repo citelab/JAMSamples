@@ -206,23 +206,16 @@ if (jsys.type == "fog") {
 
 } else if (jsys.type == "device") {
 
-    // devctrl.addHook(function(obj) {
-    //     console.log(obj);
-    //     if (obj.message.serial == jsys.id && myId < 0) {
-    //         myId = obj.message.id;
-    //
-    //         fs.readFile("RTaxi/" + myId + ".csv", function(err, data) {
-    //             var tdata = data.toString().split("\n");
-    //             processTrace(tdata);
-    //         });
-    //     }
-    // });
+    devctrl.addHook(function(obj) {
+        console.log(obj);
+        if (obj.message.serial == jsys.id && myId < 0) {
+            myId = obj.message.id;
 
-    myId = jsys.tags;
-
-    fs.readFile("RTaxi/" + myId + ".csv", function(err, data) {
-        var tdata = data.toString().split("\n");
-        processTrace(tdata);
+            fs.readFile("RTaxi/" + myId + ".csv", function(err, data) {
+                var tdata = data.toString().split("\n");
+                processTrace(tdata);
+            });
+        }
     });
 
     fogparams.addHook(function(obj) {
