@@ -17,7 +17,7 @@ if (jsys.type == "fog") {
     setInterval(function() {
 	    console.log("broadcasting.. ", jsys.tags);
 	    mytag.broadcast(jsys.tags);
-    }, 100);
+    }, 10);
 
 } else {
 
@@ -27,6 +27,6 @@ if (jsys.type == "fog") {
 	    jsys.setLat(0.0);
 	} else
 	    i = 0;
-    }, 300);
+    }, 30);
 
 }
